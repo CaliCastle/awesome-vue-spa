@@ -15,12 +15,13 @@
 
 <script>
     export default {
+        metaInfo: {
+            title: 'Home',
+            titleTemplate: '%s - Awesome App',
+        },
         data() {
             return {
-                metaInfo: {
-                    title: 'My App',
-                    titleTemplate: '%s - Yay!',
-                }
+
             }
         }
     }
