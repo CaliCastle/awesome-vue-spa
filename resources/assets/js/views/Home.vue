@@ -6,9 +6,7 @@
     export default {
         data() {
             return {
-                metaInfo: {
-                    title: 'Homepage'
-                }
+
             }
         }
     }

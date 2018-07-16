@@ -4,11 +4,12 @@
 
 <script>
     export default {
+        metaInfo: {
+            title: 'Hello There'
+        },
         data() {
             return {
-                metaInfo: {
-                    title: 'Hello There'
-                }
+
             }
         }
     }
