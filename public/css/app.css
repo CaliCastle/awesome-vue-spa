@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito:400,700);@-webkit-keyframes spinAround {
+@import url(https://fonts.googleapis.com/css?family=Nunito:400,500,700);@-webkit-keyframes spinAround {
   from {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
@@ -351,7 +351,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Nunito", sans-serif;
+  font-family: "Nunito", "PingFang SC", -apple-system, Arial, sans-serif;
 }
 
 code,

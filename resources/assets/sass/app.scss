@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,500,700');
+
+// Set brand colors
+$purple: #8A4D76;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #dcddd9;
+$beige-lighter: #f7f8f3;
+
+// Update global variables
+$family-sans-serif: "Nunito", "PingFang SC", -apple-system, Arial, sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $pink;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some component variables
+$body-background-color: $beige-lighter;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Import components
+@import "~bulma/sass/utilities/all";
+@import "~bulma/sass/base/all";
+@import "~bulma/sass/elements/button";
+@import "~bulma/sass/elements/container";
+@import "~bulma/sass/elements/form";
+@import "~bulma/sass/elements/title";
+@import "~bulma/sass/components/modal";
+@import "~bulma/sass/layout/hero";
+@import "~bulma/sass/layout/section";
