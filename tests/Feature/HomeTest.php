@@ -16,7 +16,6 @@ class HomeTest extends TestCase
     {
         $response = $this->get('/');
 
-        $response->assertStatus(200)
-            ->assertSeeText(config('app.name'));
+        $response->assertStatus(200);
     }
 }
