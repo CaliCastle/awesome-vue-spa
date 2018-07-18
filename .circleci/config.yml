@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/php:7.2-cli
+      - image: circleci/php:7.2-browsers
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -36,6 +36,9 @@ jobs:
           paths:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
+
+      - run: touch storage/testing.sqlite
+      - run: php artisan migrate --env=testing --database=sqlite_testing --force
 
       # run tests!
       - run: ./vendor/bin/phpunit
