@@ -1,28 +1,25 @@
 <template>
-    <div>
-        <h1>Vue Router Demo App</h1>
-
-        <p>
-            <router-link :to="{ name: 'home' }">Home</router-link> |
-            <router-link :to="{ name: 'hello' }">Hello World</router-link>
-        </p>
-
-        <div class="container">
+    <main>
+        <hero></hero>
+        <section class="section threads-section">
             <router-view></router-view>
-        </div>
-    </div>
+        </section>
+    </main>
 </template>
 
 <script>
+    import Hero from './app/Hero.vue'
+
     export default {
+        components: { Hero },
         metaInfo: {
-            title: 'Home',
-            titleTemplate: '%s - Awesome App',
+            title: '主页',
+            titleTemplate: (titleChunk => {
+                return titleChunk ? `${titleChunk} - ${window.App.name}` : window.App.name;
+            }),
         },
         data() {
-            return {
-
-            }
+            return {}
         }
     }
 </script>

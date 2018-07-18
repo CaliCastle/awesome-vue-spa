@@ -1,13 +1,17 @@
 <template>
-    <p>This is a homepage.</p>
+    <div class="container">
+        <div class="columns">
+            <threads></threads>
+            <channels></channels>
+        </div>
+    </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
+    import Threads from './home/Threads.vue'
+    import Channels from './home/Channels.vue'
 
-            }
-        }
+    export default {
+        components: { Threads, Channels }
     }
 </script>
