@@ -21,6 +21,6 @@ class HomeTest extends TestCase
 
     public function test_if_a_user_can_register()
     {
-
+        
     }
 }

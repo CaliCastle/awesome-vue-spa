@@ -15,10 +15,13 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "popper.js": "^1.12",
+        "tailwindcss": "^0.6.4",
         "vue": "^2.5.7"
     },
     "dependencies": {
         "bulma": "^0.7.1",
+        "timeago.js": "^3.0.2",
+        "tinycolor2": "^1.4.1",
         "vue-meta": "^1.5.2",
         "vue-router": "^3.0.1"
     }

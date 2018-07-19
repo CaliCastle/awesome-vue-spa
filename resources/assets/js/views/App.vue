@@ -15,7 +15,7 @@
         metaInfo: {
             title: '主页',
             titleTemplate: (titleChunk => {
-                return titleChunk ? `${titleChunk} - ${window.App.name}` : window.App.name;
+                return titleChunk ? `${titleChunk} - ${App.name}` : App.name;
             }),
         },
         data() {

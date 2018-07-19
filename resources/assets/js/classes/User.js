@@ -11,7 +11,7 @@ class User {
     }
 
     static attributes() {
-        return ['id', 'name', 'email']
+        return ['id', 'username', 'name', 'email']
     }
 }
 

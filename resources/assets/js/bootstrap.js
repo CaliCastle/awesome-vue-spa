@@ -10,7 +10,45 @@ window.Vue = Vue
 window.Event = new Event()
 window.Form = new Form()
 
-window.App = {
-    name: document.querySelector('meta[name="app-name"]').content,
-    user: new User()
-}
+/**
+ * Global access for store, `single source of truth`.
+ *
+ * @type {CombinedVueInstance<V extends Vue, Object, Object, Object, Record<never, any>>}
+ */
+window.App = new Vue({
+    data: {
+        name: '',
+        user: new User()
+    },
+    created() {
+        this.name = document.querySelector('meta[name="app-name"]').content
+    }
+})
+/**
+ * Assign to global Vue.
+ *
+ * @type {CombinedVueInstance<V, extends, Vue, Object, Object, Object, Record<never, any>>}
+ */
+Vue.prototype.App = App
+
+/**
+ * Bootstrap Api Client
+ */
+import { ApiClient } from './classes/http/ApiClient'
+
+let baseApiUrl = document.querySelector('meta[name="base-api-url"]').content
+window.ApiClient = new ApiClient(baseApiUrl)
+
+/**
+ * Bootstrap TimeAgo plugin.
+ */
+import timeago from 'timeago.js'
+
+window.TimeAgo = timeago()
+
+/**
+ * Bootstrap TinyColor plugin.
+ */
+import tinycolor from 'tinycolor2'
+
+window.TinyColor = tinycolor
