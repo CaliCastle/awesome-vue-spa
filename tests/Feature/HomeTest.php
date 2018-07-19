@@ -18,4 +18,9 @@ class HomeTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_if_a_user_can_register()
+    {
+
+    }
 }

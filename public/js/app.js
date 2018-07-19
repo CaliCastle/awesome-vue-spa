@@ -1092,6 +1092,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_App_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_Home_vue__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_Home_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_Home_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Modal_vue__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_Modal_vue__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -1099,7 +1101,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 __webpack_require__(12);
-__webpack_require__(37);
 
 
 
@@ -1110,7 +1111,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_meta___default.a);
 
 
 
-// import Modal from './components/Modal.vue'
+
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     mode: 'history',
@@ -1122,9 +1123,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
 });
 
 var app = new Vue({
-    components: {
-        'app': __WEBPACK_IMPORTED_MODULE_2__views_App_vue___default.a
-    },
+    components: { App: __WEBPACK_IMPORTED_MODULE_2__views_App_vue___default.a, Modal: __WEBPACK_IMPORTED_MODULE_4__components_Modal_vue___default.a },
     router: router
 }).$mount('#app');
 
@@ -1136,10 +1135,12 @@ var app = new Vue({
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_Event__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_form_Form__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_Event__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__classes_form_Form__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__classes_User__ = __webpack_require__(69);
 window._ = __webpack_require__(13);
 window.axios = __webpack_require__(15);
+
 
 
 
@@ -1148,6 +1149,11 @@ window.axios = __webpack_require__(15);
 window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
 window.Event = new __WEBPACK_IMPORTED_MODULE_1__classes_Event__["a" /* default */]();
 window.Form = new __WEBPACK_IMPORTED_MODULE_2__classes_form_Form__["a" /* default */]();
+
+window.App = {
+    name: document.querySelector('meta[name="app-name"]').content,
+    user: new __WEBPACK_IMPORTED_MODULE_3__classes_User__["a" /* default */]()
+};
 
 /***/ }),
 /* 13 */
@@ -30409,16 +30415,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 /* 37 */
-/***/ (function(module, exports) {
-
-var app = {
-    name: document.querySelector('meta[name="app-name"]').content
-};
-
-window.App = app;
-
-/***/ }),
-/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30453,11 +30449,11 @@ var Event = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Event);
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormErrors__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FormErrors__ = __webpack_require__(39);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30619,7 +30615,7 @@ var Form = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Form);
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30710,6 +30706,7 @@ var FormErrors = function () {
 /* harmony default export */ __webpack_exports__["a"] = (FormErrors);
 
 /***/ }),
+/* 40 */,
 /* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -34855,13 +34852,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", [_c("a", [_vm._v("Modifiers")])])
+    return _c("li", [_c("a", [_vm._v("页面2")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", [_c("a", [_vm._v("Grid")])])
+    return _c("li", [_c("a", [_vm._v("页面3")])])
   }
 ]
 render._withStripped = true
@@ -35043,7 +35040,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    methods: {}
+});
 
 /***/ }),
 /* 56 */
@@ -35194,6 +35193,176 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(67)
+/* template */
+var __vue_template__ = __webpack_require__(68)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Modal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6e8d36f4", Component.options)
+  } else {
+    hotAPI.reload("data-v-6e8d36f4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal" }, [
+    _c("div", { staticClass: "modal-background" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal-card" }, [
+      _c("header", { staticClass: "modal-card-head" }, [
+        _c("p", { staticClass: "modal-card-title" }, [_vm._t("header")], 2),
+        _vm._v(" "),
+        _c("button", {
+          staticClass: "delete",
+          attrs: { "aria-label": "close" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "modal-card-body" }, [_vm._t("default")], 2),
+      _vm._v(" "),
+      _c(
+        "footer",
+        { staticClass: "modal-card-foot" },
+        [
+          _vm._t("footer", [
+            _c("button", { staticClass: "button is-success" }, [
+              _vm._v("Save changes")
+            ]),
+            _vm._v(" "),
+            _c("button", { staticClass: "button" }, [_vm._v("Cancel")])
+          ])
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6e8d36f4", module.exports)
+  }
+}
+
+/***/ }),
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var User = function () {
+    function User() {
+        var attributes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+        _classCallCheck(this, User);
+
+        if (attributes == null) return;
+
+        // Map attributes from object
+        var attr = User.attributes();
+
+        for (var index in attr) {
+            if (attributes.hasOwnProperty(attr[index])) this[attr[index]] = attributes[attr[index]];
+        }
+    }
+
+    _createClass(User, null, [{
+        key: 'attributes',
+        value: function attributes() {
+            return ['id', 'name', 'email'];
+        }
+    }]);
+
+    return User;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (User);
 
 /***/ })
 /******/ ]);

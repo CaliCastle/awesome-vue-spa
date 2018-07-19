@@ -21,10 +21,10 @@
                             <router-link :to="{ name: 'home' }" class="navbar-item">主页</router-link>
                         </li>
                         <li>
-                            <a>Modifiers</a>
+                            <a>页面2</a>
                         </li>
                         <li>
-                            <a>Grid</a>
+                            <a>页面3</a>
                         </li>
                     </ul>
                 </div>

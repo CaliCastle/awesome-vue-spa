@@ -5,7 +5,6 @@
  */
 
 require('./bootstrap')
-require('./classes/App')
 
 import Router from 'vue-router'
 import Meta from 'vue-meta'
@@ -13,10 +12,10 @@ import Meta from 'vue-meta'
 Vue.use(Router)
 Vue.use(Meta)
 
-import AppView from './views/App.vue'
+import App from './views/App.vue'
 import Home from './views/Home.vue'
 
-// import Modal from './components/Modal.vue'
+import Modal from './components/Modal.vue'
 
 const router = new Router({
     mode: 'history',
@@ -30,8 +29,6 @@ const router = new Router({
 })
 
 const app = new Vue({
-    components: {
-        'app': AppView
-    },
+    components: { App, Modal },
     router,
 }).$mount('#app')
