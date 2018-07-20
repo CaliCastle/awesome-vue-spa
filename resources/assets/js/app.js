@@ -12,21 +12,9 @@ import Meta from 'vue-meta'
 Vue.use(Router)
 Vue.use(Meta)
 
+import router from './router'
 import App from './views/App.vue'
-import Home from './views/Home.vue'
-
 import Modal from './components/Modal.vue'
-
-const router = new Router({
-    mode: 'history',
-    routes: [
-        {
-            path: '/',
-            name: 'home',
-            component: Home
-        }
-    ]
-})
 
 const app = new Vue({
     components: { App, Modal },
