@@ -7,7 +7,7 @@
         <section class="section">
             <article class="media" v-for="thread in threads">
                 <figure class="media-left">
-                    <div class="image is-64x64 rounded-lg flex items-center justify-center" :style="{ backgroundColor: '#' + thread.channel.color, color: lightTextColor(thread.channel.color) ? '#111' : '#fff' }">
+                    <div class="image is-64x64 rounded-lg flex items-center justify-center" :style="{ backgroundColor: '#' + thread.channel.color, color: darkTextColor(thread.channel.color) ? '#111' : '#fff' }">
                         <b class="is-size-3" v-text="thread.user.name.charAt(0)"></b>
                     </div>
                 </figure>
@@ -70,7 +70,7 @@
             }
         },
         methods: {
-            lightTextColor(fromColor) {
+            darkTextColor(fromColor) {
                 return TinyColor(fromColor).isLight()
             }
         },
