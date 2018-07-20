@@ -13,6 +13,10 @@ class User {
     static attributes() {
         return ['id', 'username', 'name', 'email']
     }
+
+    static authenticate() {
+
+    }
 }
 
 export default User

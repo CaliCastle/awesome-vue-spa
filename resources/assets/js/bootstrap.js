@@ -27,12 +27,19 @@ window.App = new Vue({
         this.name = document.querySelector('meta[name="app-name"]').content
     }
 })
+
 /**
  * Assign to global Vue.
  *
  * @type {CombinedVueInstance<V, extends, Vue, Object, Object, Object, Record<never, any>>}
  */
 Vue.prototype.App = App
+
+/**
+ * Use Vue-Modal.
+ */
+import VModal from 'vue-js-modal'
+Vue.use(VModal)
 
 /**
  * Bootstrap Api Client

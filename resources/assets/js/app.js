@@ -14,9 +14,8 @@ Vue.use(Meta)
 
 import router from './router'
 import App from './views/App.vue'
-import Modal from './components/Modal.vue'
 
 const app = new Vue({
-    components: { App, Modal },
+    components: { App },
     router,
 }).$mount('#app')

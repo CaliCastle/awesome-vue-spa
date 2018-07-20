@@ -193,40 +193,9 @@ module.exports = {
   */
 
   fonts: {
-    'sans': [
-      'system-ui',
-      'BlinkMacSystemFont',
-      '-apple-system',
-      'Segoe UI',
-      'Roboto',
-      'Oxygen',
-      'Ubuntu',
-      'Cantarell',
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
-      'sans-serif',
-    ],
-    'serif': [
-      'Constantia',
-      'Lucida Bright',
-      'Lucidabright',
-      'Lucida Serif',
-      'Lucida',
-      'DejaVu Serif',
-      'Bitstream Vera Serif',
-      'Liberation Serif',
-      'Georgia',
-      'serif',
-    ],
-    'mono': [
-      'Menlo',
-      'Monaco',
-      'Consolas',
-      'Liberation Mono',
-      'Courier New',
-      'monospace',
-    ]
+    'sans': [],
+    'serif': [],
+    'mono': []
   },
 
 
@@ -277,15 +246,15 @@ module.exports = {
   */
 
   fontWeights: {
-    'hairline': 100,
-    'thin': 200,
+    // 'hairline': 100,
+    // 'thin': 200,
     'light': 300,
     'normal': 400,
     'medium': 500,
     'semibold': 600,
     'bold': 700,
     'extrabold': 800,
-    'black': 900,
+    // 'black': 900,
   },
 
 

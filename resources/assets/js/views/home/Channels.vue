@@ -2,7 +2,7 @@
     <div class="column">
         <nav class="panel">
             <p class="panel-heading">
-                repositories
+                微博频道
             </p>
             <div class="panel-block">
                 <p class="control has-icons-left">
