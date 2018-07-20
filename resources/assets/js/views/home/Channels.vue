@@ -19,7 +19,7 @@
                 <span class="panel-icon">
                   <i class="fas fa-book" aria-hidden="true"></i>
                 </span>
-                频道
+                频道 1
             </a>
         </nav>
     </div>
