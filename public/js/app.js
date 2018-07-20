@@ -36525,7 +36525,7 @@ var staticRenderFns = [
               attrs: { "aria-hidden": "true" }
             })
           ]),
-          _vm._v("\n            频道1\n        ")
+          _vm._v("\n            频道\n        ")
         ])
       ])
     ])
