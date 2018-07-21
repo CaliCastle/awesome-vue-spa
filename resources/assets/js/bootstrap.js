@@ -47,7 +47,9 @@ Vue.use(VModal)
 import { ApiClient } from './classes/http/ApiClient'
 
 let baseApiUrl = document.querySelector('meta[name="base-api-url"]').content
+
 window.ApiClient = new ApiClient(baseApiUrl)
+Vue.prototype.$client = window.ApiClient
 
 /**
  * Bootstrap TimeAgo plugin.

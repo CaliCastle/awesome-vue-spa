@@ -1,14 +1,22 @@
 import VueRouter from 'vue-router'
 
+const Home = () => import('./views/Home.vue')
+const Rank = () => import('./views/Rank.vue')
+
 let routes = [
     {
         path: '/',
-        component: require('./views/home')
+        component: Home
+    },
+    {
+        path: '/rank',
+        name: 'rank',
+        component: Rank
     }
 ]
 
 export default new VueRouter({
     mode: 'history',
     routes,
-    linkActiveClass: 'is-active'
+    linkExactActiveClass: 'is-active'
 })

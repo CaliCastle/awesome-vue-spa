@@ -12,6 +12,15 @@ let tailwindcss = require('tailwindcss');
  |
  */
 
+mix.webpackConfig({
+    output: {
+        publicPath: '/',
+        chunkFilename: 'js/chunk/[name].js?[chunkhash]'
+    },
+})
+
+mix.sass('resources/assets/sass/plugins/pace.scss', 'public/css')
+
 mix.sass('resources/assets/sass/utilities.scss', 'public/css')
     .options({
         processCssUrls: false,

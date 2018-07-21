@@ -1,7 +1,7 @@
 <template>
     <div class="column">
         <nav class="panel">
-            <p class="panel-heading">
+            <p class="panel-heading panel-heading has-text-white has-background-primary">
                 <i class="fas fa-fire"></i>&nbsp;热门频道
             </p>
             <a class="panel-block is-active">

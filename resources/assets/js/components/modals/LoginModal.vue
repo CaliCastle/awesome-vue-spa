@@ -5,7 +5,7 @@
                 <div class="partition-title text-2xl">账号登陆</div>
                 <div class="partition-form">
                     <form autocomplete="false">
-                        <input id="login-email" type="text" placeholder="邮箱">
+                        <input id="login-email" type="email" placeholder="邮箱">
                         <input id="login-password" type="password" placeholder="密码">
                     </form>
 
@@ -26,6 +26,11 @@
         data () {
             return {
                 modalWidth: MODAL_WIDTH
+            }
+        },
+        methods: {
+            onSubmitForm() {
+
             }
         },
         created () {
@@ -93,7 +98,7 @@
             }
         }
         input[type=password],
-        input[type=text] {
+        input[type=email] {
             display: block;
             box-sizing: border-box;
             margin-bottom: 4px;
@@ -107,27 +112,6 @@
             transition: 0.5s all;
             outline: none;
         }
-        /*button {*/
-            /*background: white;*/
-            /*border-radius: 4px;*/
-            /*box-sizing: border-box;*/
-            /*padding: 10px;*/
-            /*letter-spacing: 1px;*/
-            /*font-weight: 400;*/
-            /*min-width: 140px;*/
-            /*margin-top: 8px;*/
-            /*color: #8b8c8d;*/
-            /*cursor: pointer;*/
-            /*border: 1px solid #DDDEDF;*/
-            /*text-transform: uppercase;*/
-            /*transition: 0.1s all;*/
-            /*font-size: 10px;*/
-            /*outline: none;*/
-            /*&:hover {*/
-                /*border-color: mix(#DDDEDF, black, 90%);*/
-                /*color: mix(#8b8c8d, black, 80%);*/
-            /*}*/
-        /*}*/
     }
     .pop-out-enter-active,
     .pop-out-leave-active {

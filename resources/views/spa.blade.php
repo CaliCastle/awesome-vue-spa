@@ -10,6 +10,7 @@
 
     <title>Vue SPA</title>
 
+    <link rel="stylesheet" href="{{ mix('/css/pace.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ mix('css/utilities.css') }}">
 </head>
@@ -18,6 +19,7 @@
         <app></app>
     </div>
 
+    <script src="/js/pace.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
     <script src="{{ mix('js/app.js') }}"></script>
 </body>

@@ -12,6 +12,9 @@
     import Channels from './home/Channels.vue'
 
     export default {
-        components: { Threads, Channels }
+        components: { Threads, Channels },
+        metaInfo: {
+            title: '看微博'
+        }
     }
 </script>
