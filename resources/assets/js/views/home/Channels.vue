@@ -2,16 +2,8 @@
     <div class="column">
         <nav class="panel">
             <p class="panel-heading">
-                微博频道
+                <i class="fas fa-fire"></i>&nbsp;热门频道
             </p>
-            <div class="panel-block">
-                <p class="control has-icons-left">
-                    <input class="input is-small" type="text" placeholder="search">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                    </span>
-                </p>
-            </div>
             <a class="panel-block is-active">
                 全部频道
             </a>

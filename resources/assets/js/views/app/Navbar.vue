@@ -12,7 +12,7 @@
             <div id="navbarMenuHeroA" class="navbar-menu">
                 <div class="navbar-end">
                     <span class="navbar-item">
-                        <a class="button is-primary is-inverted is-outlined">
+                        <a class="button is-primary is-inverted is-outlined" @click.prevent="$modal.show('login')">
                             <span class="icon">
                                 <i class="fas fa-sign-in-alt"></i>
                             </span>
