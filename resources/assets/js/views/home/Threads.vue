@@ -1,5 +1,5 @@
 <template>
-    <div class="column is-two-thirds">
+    <div class="column">
         <h1 class="title">微博总览</h1>
         <h2 class="subtitle leading-normal">
             一个可以让你发布任何内容的<strong>高大上微博</strong>, 好像很厉害一样，但其实就这么简单

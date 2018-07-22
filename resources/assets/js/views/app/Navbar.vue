@@ -63,7 +63,11 @@
             }
         },
         methods: {
+            onDropdownClick() {
+                this.dropdownOpen = false
+            },
             logoutDidClick() {
+                this.onDropdownClick()
                 Auth.logout()
             },
             toggleDropdown() {

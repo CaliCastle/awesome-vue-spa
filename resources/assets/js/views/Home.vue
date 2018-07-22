@@ -2,17 +2,17 @@
     <div class="container">
         <div class="columns">
             <threads></threads>
-            <channels></channels>
+            <sidebar></sidebar>
         </div>
     </div>
 </template>
 
 <script>
     import Threads from './home/Threads.vue'
-    import Channels from './home/Channels.vue'
+    import Sidebar from './home/Sidebar.vue'
 
     export default {
-        components: { Threads, Channels },
+        components: { Threads, Sidebar },
         metaInfo: {
             title: '看微博'
         }
