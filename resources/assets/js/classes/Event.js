@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 class Event {
     constructor() {
         this.vue = new Vue()
@@ -12,4 +14,4 @@ class Event {
     }
 }
 
-export default Event
+export default new Event()

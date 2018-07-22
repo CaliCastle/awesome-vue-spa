@@ -39,7 +39,7 @@ return [
     'digits'               => ':attribute 必须是 :digits 位的数字。',
     'digits_between'       => ':attribute 必须是介于 :min 和 :max 位的数字。',
     'distinct'             => ':attribute 已经存在。',
-    'email'                => ':attribute 不是一个合法的邮箱。',
+    'email'                => ':attribute 不是一个有效的邮箱地址。',
     'exists'               => ':attribute 不存在。',
     'filled'               => ':attribute 不能为空。',
     'image'                => ':attribute 必须是图片。',
@@ -80,7 +80,7 @@ return [
         'array'   => ':attribute 必须为 :size 个单元。',
     ],
     'string'               => ':attribute 必须是一个字符串。',
-    'timezone'             => ':attribute 必须是一个合法的时区值。',
+    'timezone'             => ':attribute 必须是一个有效的时区值。',
     'unique'               => ':attribute 已经存在。',
     'url'                  => ':attribute 格式不正确。',
 

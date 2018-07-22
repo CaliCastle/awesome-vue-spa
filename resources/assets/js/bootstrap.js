@@ -7,11 +7,13 @@ window.axios.defaults.headers.common = {
 import Vue from 'vue'
 import Event from './classes/Event'
 import Form from './classes/form/Form'
+import Auth from './classes/Auth'
 import User from './classes/User'
 
 window.Vue = Vue
-window.Event = new Event()
+window.Event = Event
 window.Form = Form
+window.Auth = Auth
 
 /**
  * Global access for store, `single source of truth`.
@@ -20,11 +22,17 @@ window.Form = Form
  */
 window.App = new Vue({
     data: {
-        name: '',
-        user: new User()
+        user: new User(),
+        authenticated: Auth.checkAuthentication()
     },
     created() {
         this.name = document.querySelector('meta[name="app-name"]').content
+    },
+    mounted() {
+        Event.listen('user-logged-in', () => {
+            this.authenticated = true
+            this.user = Auth.user
+        })
     }
 })
 

@@ -11,11 +11,12 @@ class ThreadsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 20; $i++) {
-            $user = App\User::all()->random();
+        $users = App\User::all();
+
+        foreach ($users as $user) {
             $channel = $user->channels->first();
 
-            factory(App\Thread::class, 3)->make()->each(function ($thread) use ($user, $channel) {
+            factory(App\Thread::class, 2)->make()->each(function ($thread) use ($user, $channel) {
                 $thread->user_id = $user->id;
                 $thread->channel_id = $channel->id;
                 $thread->save();

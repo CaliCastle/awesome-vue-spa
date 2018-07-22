@@ -98,9 +98,9 @@ class Form {
                     resolve(data)
                 })
                 .catch(({ response }) => {
-                    this.onFail(response.data.errors)
+                    this.onFail(response.data)
 
-                    reject(response.data.errors)
+                    reject(response.data)
                 }).then(() => {
                     this.loading = false
             })
@@ -119,10 +119,23 @@ class Form {
     /**
      * Handle a failed form submission.
      *
-     * @param {object} errors
+     * @param {object} data
      */
-    onFail(errors) {
-        this.errors.record(errors)
+    onFail(data) {
+        // Record standard validation errors
+        if (data.hasOwnProperty('errors')) {
+            this.errors.record(data.errors)
+            return
+        }
+        // Record message only validation errors
+        if (data.hasOwnProperty('message')) {
+            let message = data.message
+            // Construct errors object
+            let errors = {}
+            errors[Object.keys(this.originalData)[0]] = message
+
+            this.errors.record(errors)
+        }
     }
 }
 

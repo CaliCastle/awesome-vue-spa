@@ -5,10 +5,10 @@
                 <logo />
                 <div class="partition-title text-2xl has-text-weight-bold has-text-primary">账号登陆</div>
                 <div class="partition-form w-full">
-                    <form autocomplete="false" @submit.prevent="onSubmitForm">
+                    <form method="POST" @submit.prevent="onSubmitForm">
                         <div class="field">
                             <div class="control has-icons-left">
-                                <input id="login-email" class="input" type="email" placeholder="邮箱" v-model="form.email" :class="{ 'text-red-light': form.errors.has('email') }">
+                                <input id="login-email" class="input" type="email" placeholder="邮箱" v-model="form.email" :class="{ 'text-red-light': form.errors.has('email') }" @keyup.enter.prevent="onSubmitForm" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-envelope"></i>
                                 </span>
@@ -17,7 +17,7 @@
                         </div>
                         <div class="field">
                             <div class="control has-icons-left">
-                                <input id="login-password" class="input" type="password" placeholder="密码" v-model="form.password" :class="{ 'text-red-light': form.errors.has('password') }">
+                                <input id="login-password" class="input" type="password" placeholder="密码" v-model="form.password" :class="{ 'text-red-light': form.errors.has('password') }" @keyup.enter.prevent="onSubmitForm" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-lock"></i>
                                 </span>
@@ -26,11 +26,11 @@
                         </div>
 
                         <div class="button-set flex my-5 -mx-2">
-                            <a class="button is-primary flex-1 mx-2 text-sm" @click.prevent="onSubmitForm" :class="{ 'is-loading' : form.loading }">
+                            <a class="button is-primary flex-1 mx-2 text-sm rounded-full" @click.prevent="onSubmitForm" :class="{ 'is-loading' : form.loading }">
                                 <span class="icon"><i class="fas fa-sign-in-alt"></i></span>
                                 <span>登陆</span>
                             </a>
-                            <a class="button is-light flex-1 mx-2 text-sm" @click.prevent="registerDidClick">
+                            <a class="button is-light flex-1 mx-2 text-sm rounded-full" @click.prevent="registerDidClick">
                                 <span class="icon"><i class="fas fa-plus-circle"></i></span>
                                 <span>注册</span>
                             </a>
@@ -60,9 +60,9 @@
                 console.log("Register")
             },
             onSubmitForm() {
-                this.form.post('login')
+                this.form.post('/login')
                     .then(data => {
-                        console.dir(data)
+                        Auth.login(data.token, data.user)
                     })
                     .catch(error => {})
             }
