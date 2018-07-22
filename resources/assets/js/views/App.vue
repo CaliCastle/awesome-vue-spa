@@ -1,10 +1,12 @@
 <template>
-    <main>
+    <main class="flex flex-col justify-between min-h-screen">
         <hero></hero>
         <section class="section threads-section">
-            <router-view></router-view>
+            <transition name="fade" mode="out-in">
+                <router-view></router-view>
+            </transition>
         </section>
-
+        <app-footer/>
         <login-modal />
     </main>
 </template>
@@ -12,9 +14,10 @@
 <script>
     import Hero from './app/Hero.vue'
     import LoginModal from '../components/modals/LoginModal.vue'
+    import AppFooter from "./AppFooter";
 
     export default {
-        components: { Hero, LoginModal },
+        components: { AppFooter, Hero, LoginModal },
         metaInfo: {
             title: '主页',
             titleTemplate: (titleChunk => {

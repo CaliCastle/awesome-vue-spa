@@ -27,3 +27,43 @@ $input-shadow: none;
 // Import components
 @import "~bulma/sass/utilities/all";
 @import "~bulma/bulma";
+
+body {
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	min-height: 100vh;
+}
+
+.slide-fade-enter-active {
+	transition: all .487s ease-in-out;
+}
+.slide-fade-leave-active {
+	transition: all .487s ease-in-out;
+}
+.slide-fade-enter, .slide-fade-leave-to {
+	transform: translateY(36px);
+	opacity: 0;
+}
+
+.slide-right-fade-enter-active {
+	transition: all .358s ease-in-out;
+}
+.slide-right-fade-leave-active {
+	transition: all .358s ease-in-out;
+}
+.slide-right-fade-enter, .slide-right-fade-leave-to {
+	transform: translateX(33px);
+	opacity: 0;
+}
+
+.fade-enter-active {
+	transition: all .42s ease-in-out;
+}
+.fade-leave-active {
+	transition: all .42s ease-in-out;
+}
+.fade-enter, .fade-leave-to {
+	opacity: 0;
+}
