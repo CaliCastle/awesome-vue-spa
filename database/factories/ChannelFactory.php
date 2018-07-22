@@ -1,7 +1,5 @@
 <?php
 
-use Faker\Generator as Faker;
-
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -13,7 +11,9 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Channel::class, function (Faker $faker) {
+$factory->define(App\Channel::class, function () {
+    $faker = \Faker\Factory::create(app()->getLocale());
+
     return [
         'name'  => $faker->name,
         'color' => str_replace('#', '', $faker->hexColor)

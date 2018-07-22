@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,6 +13,9 @@ use Illuminate\Http\Request;
 
 Route::get('/threads', 'Api\ThreadsController@index');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/login', 'Api\AuthController@login');
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/me', 'Api\AuthController@me');
+    Route::post('/logout', 'Api\AuthController@logout');
 });

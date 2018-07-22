@@ -3,10 +3,11 @@ class User {
         if (attributes == null) return
 
         // Map attributes from object
-        const attr = User.attributes()
+        const attr = User.attributes(),
+            keys = Object.keys(attributes)
 
-        for (let index in attr) {
-            if (attributes.hasOwnProperty(attr[index])) this[attr[index]] = attributes[attr[index]]
+        for (let index in keys) {
+            if (attributes.hasOwnProperty(keys[index])) this[keys[index]] = attributes[keys[index]]
         }
     }
 

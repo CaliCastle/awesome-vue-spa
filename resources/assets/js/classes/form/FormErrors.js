@@ -28,8 +28,10 @@ class FormErrors {
      * @param {string} field
      */
     get(field) {
-        if (this.errors[field]) {
-            return this.errors[field][0]
+        let error = this.errors[field]
+
+        if (error) {
+            return Array.isArray(error) ? error[0] : error
         }
     }
 

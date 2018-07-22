@@ -17,14 +17,14 @@
             <nav class="tabs is-boxed is-fullwidth">
                 <div class="container">
                     <ul>
-                        <li class="is-active">
-                            <router-link :to="{ name: 'home' }" class="navbar-item">主页</router-link>
-                        </li>
+                        <router-link tag="li" to="/">
+                            <a class="navbar-item" href="/">看微博</a>
+                        </router-link>
+                        <router-link tag="li" :to="{ name: 'rank' }">
+                            <a class="navbar-item" href="/rank">排行榜</a>
+                        </router-link>
                         <li>
-                            <a>页面2</a>
-                        </li>
-                        <li>
-                            <a>页面3</a>
+                            <a>页面</a>
                         </li>
                     </ul>
                 </div>

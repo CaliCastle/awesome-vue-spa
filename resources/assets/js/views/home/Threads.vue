@@ -4,7 +4,7 @@
         <h2 class="subtitle leading-normal">
             一个可以让你发布任何内容的<strong>高大上微博</strong>, 好像很厉害一样，但其实就这么简单
         </h2>
-        <section class="section">
+        <section class="py-6">
             <article class="media" v-for="thread in threads">
                 <figure class="media-left">
                     <div class="image is-64x64 rounded-lg flex items-center justify-center" :style="{ backgroundColor: '#' + thread.channel.color, color: darkTextColor(thread.channel.color) ? '#111' : '#fff' }">
@@ -75,7 +75,7 @@
             }
         },
         created() {
-            ApiClient.get('/threads').then(({ data }) => {
+            this.$client.get('/threads').then(({ data }) => {
                 const threads = data.threads
 
                 this.threads = threads.data
