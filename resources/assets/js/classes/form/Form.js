@@ -8,6 +8,7 @@ class Form {
      */
     constructor(data) {
         this.originalData = data
+        this.loading = false
 
         for (let field in data) {
             this[field] = data[field]
@@ -84,18 +85,25 @@ class Form {
      * @param {string} url
      */
     submit(requestType, url) {
+        if (this.loading) return
+
+        this.loading = true
+        this.errors.clear()
+
         return new Promise((resolve, reject) => {
-            axios[requestType](url, this.data())
-                .then(response => {
-                    this.onSuccess(response.data)
+            ApiClient.request(requestType, url, this.data())
+                .then(({ data }) => {
+                    this.onSuccess(data)
 
-                    resolve(response.data)
+                    resolve(data)
                 })
-                .catch(error => {
-                    this.onFail(error.response.data)
+                .catch(({ response }) => {
+                    this.onFail(response.data.errors)
 
-                    reject(error.response.data)
-                })
+                    reject(response.data.errors)
+                }).then(() => {
+                    this.loading = false
+            })
         })
     }
 
@@ -105,8 +113,6 @@ class Form {
      * @param {object} data
      */
     onSuccess(data) {
-        console.error(data.message) // TODO: temporary
-
         this.reset()
     }
 

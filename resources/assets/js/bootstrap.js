@@ -11,7 +11,7 @@ import User from './classes/User'
 
 window.Vue = Vue
 window.Event = new Event()
-window.Form = new Form()
+window.Form = Form
 
 /**
  * Global access for store, `single source of truth`.

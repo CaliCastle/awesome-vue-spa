@@ -2,7 +2,9 @@
     <nav class="navbar">
         <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item" v-text="App.name"></a>
+                <a class="navbar-item">
+                    <logo />
+                </a>
                 <span class="navbar-burger burger" data-target="navbarMenuHeroA">
                     <span></span>
                     <span></span>
@@ -26,5 +28,10 @@
 </template>
 
 <script>
-    export default {}
+    // import Logo from '../../components/Logo.vue'
+    //
+    export default {
+        name: 'navbar',
+        // components: { Logo }
+    }
 </script>

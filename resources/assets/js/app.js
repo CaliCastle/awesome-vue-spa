@@ -15,6 +15,8 @@ Vue.use(Meta)
 import router from './router'
 import App from './views/App.vue'
 
+Vue.component('logo', require('./components/Logo.vue'))
+
 const app = new Vue({
     components: { App },
     router,

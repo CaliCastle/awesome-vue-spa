@@ -27,6 +27,12 @@ class ApiClient {
         this.client = getClient(baseUrl);
     }
 
+    request(type, url, conf = {}) {
+        return this.client[type](url, conf)
+            .then(response => Promise.resolve(response))
+            .catch(error => Promise.reject(error));
+    }
+
     get(url, conf = {}) {
         return this.client.get(url, conf)
             .then(response => Promise.resolve(response))
@@ -76,7 +82,14 @@ export { ApiClient };
  * Base HTTP Client
  */
 export default {
+
     // Provide request methods with the default base_url
+    request(type, url, conf = {}) {
+        return getClient()[type](url, conf)
+            .then(response => Promise.resolve(response))
+            .catch(error => Promise.reject(error));
+    },
+
     get(url, conf = {}) {
         return getClient().get(url, conf)
             .then(response => Promise.resolve(response))
