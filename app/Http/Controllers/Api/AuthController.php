@@ -81,6 +81,16 @@ class AuthController extends Controller
     }
 
     /**
+     * Get current user data.
+     *
+     * @return \Illuminate\Contracts\Auth\Authenticatable|null
+     */
+    public function me()
+    {
+        return auth()->user();
+    }
+
+    /**
      * Log the user out.
      *
      * @return \Illuminate\Http\JsonResponse

@@ -62,7 +62,9 @@
             onSubmitForm() {
                 this.form.post('/login')
                     .then(data => {
-                        Auth.login(data.token, data.user)
+                        Auth.login(data.token, new User(data.user))
+
+                        this.$modal.hide('login')
                     })
                     .catch(error => {})
             }
