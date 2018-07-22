@@ -2,9 +2,9 @@
     <nav class="navbar">
         <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item">
+                <router-link class="navbar-item" to="/" exact-active-class="">
                     <logo />
-                </a>
+                </router-link>
                 <span class="navbar-burger burger" data-target="navbarMenuHeroA">
                     <span></span>
                     <span></span>
@@ -28,10 +28,7 @@
 </template>
 
 <script>
-    // import Logo from '../../components/Logo.vue'
-    //
     export default {
-        name: 'navbar',
-        // components: { Logo }
+        name: 'navbar'
     }
 </script>
