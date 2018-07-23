@@ -1,1 +1,887 @@
-webpackJsonp([0],{64:function(t,a,s){"use strict";Object.defineProperty(a,"__esModule",{value:!0});var e=s(65),i=s.n(e),n=s(68),l=s.n(n);a.default={components:{Threads:i.a,Sidebar:l.a},metaInfo:{title:"看微博"}}},65:function(t,a,s){var e=s(1)(s(66),s(67),!1,null,null,null);t.exports=e.exports},66:function(t,a,s){"use strict";Object.defineProperty(a,"__esModule",{value:!0}),a.default={data:function(){return{threads:[],pagination:{current_page:0,first_page_url:null,last_page:0,last_page_url:null,next_page_url:null,prev_page_url:null}}},methods:{darkTextColor:function(t){return TinyColor(t).isLight()}},created:function(){var t=this;this.$client.get("/threads").then(function(a){var s=a.data.threads;t.threads=s.data,setTimeout(function(){TimeAgo.render(document.querySelectorAll(".time"),"zh_CN")},50)})}}},67:function(t,a){t.exports={render:function(){var t=this,a=t.$createElement,s=t._self._c||a;return s("div",{staticClass:"column"},[s("h1",{staticClass:"title"},[t._v("微博总览")]),t._v(" "),t._m(0),t._v(" "),s("section",{staticClass:"py-6"},t._l(t.threads,function(a){return s("article",{staticClass:"media"},[s("figure",{staticClass:"media-left"},[s("div",{staticClass:"image is-64x64 rounded-lg flex items-center justify-center",style:{backgroundColor:"#"+a.channel.color,color:t.darkTextColor(a.channel.color)?"#111":"#fff"}},[s("b",{staticClass:"is-size-3",domProps:{textContent:t._s(a.user.name.charAt(0))}})])]),t._v(" "),s("div",{staticClass:"media-content"},[s("div",{staticClass:"content"},[s("p",[s("strong",[t._v(t._s(a.user.name))]),t._v(" "),s("small",[t._v("@"+t._s(a.user.username))]),t._v(" "),s("br"),t._v("\n                        "+t._s(a.body)+"\n                    ")])]),t._v(" "),t._m(1,!0)]),t._v(" "),s("div",{staticClass:"media-right"},[s("small",[s("time",{staticClass:"time",attrs:{datetime:a.updated_at}})])])])})),t._v(" "),t._m(2)])},staticRenderFns:[function(){var t=this.$createElement,a=this._self._c||t;return a("h2",{staticClass:"subtitle leading-normal"},[this._v("\n        一个可以让你发布任何内容的"),a("strong",[this._v("高大上微博")]),this._v(", 好像很厉害一样，但其实就这么简单\n    ")])},function(){var t=this.$createElement,a=this._self._c||t;return a("nav",{staticClass:"level is-mobile"},[a("div",{staticClass:"level-left"},[a("a",{staticClass:"level-item"},[a("span",{staticClass:"icon is-small"},[a("i",{staticClass:"fas fa-reply"})])]),this._v(" "),a("a",{staticClass:"level-item"},[a("span",{staticClass:"icon is-small"},[a("i",{staticClass:"fas fa-retweet"})])]),this._v(" "),a("a",{staticClass:"level-item"},[a("span",{staticClass:"icon is-small"},[a("i",{staticClass:"fas fa-heart"})])])])])},function(){var t=this,a=t.$createElement,s=t._self._c||a;return s("nav",{staticClass:"pagination is-centered is-rounded",attrs:{role:"navigation","aria-label":"pagination"}},[s("a",{staticClass:"pagination-previous"},[t._v("上一页")]),t._v(" "),s("a",{staticClass:"pagination-next"},[t._v("下一页")]),t._v(" "),s("ul",{staticClass:"pagination-list"},[s("li",[s("a",{staticClass:"pagination-link",attrs:{"aria-label":"Goto page 1"}},[t._v("1")])]),t._v(" "),s("li",[s("span",{staticClass:"pagination-ellipsis"},[t._v("…")])]),t._v(" "),s("li",[s("a",{staticClass:"pagination-link",attrs:{"aria-label":"Goto page 45"}},[t._v("45")])]),t._v(" "),s("li",[s("a",{staticClass:"pagination-link is-current",attrs:{"aria-label":"Page 46","aria-current":"page"}},[t._v("46")])]),t._v(" "),s("li",[s("a",{staticClass:"pagination-link",attrs:{"aria-label":"Goto page 47"}},[t._v("47")])]),t._v(" "),s("li",[s("span",{staticClass:"pagination-ellipsis"},[t._v("…")])]),t._v(" "),s("li",[s("a",{staticClass:"pagination-link",attrs:{"aria-label":"Goto page 86"}},[t._v("86")])])])])}]}},68:function(t,a,s){var e=s(1)(s(69),s(73),!1,null,null,null);t.exports=e.exports},69:function(t,a,s){"use strict";Object.defineProperty(a,"__esModule",{value:!0});var e=s(70),i=s.n(e);a.default={components:{ComposeNewThread:i.a}}},70:function(t,a,s){var e=s(1)(s(71),s(72),!1,null,null,null);t.exports=e.exports},71:function(t,a,s){"use strict";Object.defineProperty(a,"__esModule",{value:!0}),a.default={name:"ComposeNewThread"}},72:function(t,a){t.exports={render:function(){var t=this.$createElement;return(this._self._c||t)("div",{})},staticRenderFns:[]}},73:function(t,a){t.exports={render:function(){var t=this.$createElement,a=this._self._c||t;return a("div",{staticClass:"column is-one-quarter"},[a("section",{staticClass:"section"},[a("compose-new-thread")],1),this._v(" "),this._m(0)])},staticRenderFns:[function(){var t=this.$createElement,a=this._self._c||t;return a("section",{staticClass:"section"},[a("nav",{staticClass:"panel"},[a("p",{staticClass:"panel-heading panel-heading has-text-white has-background-primary"},[a("i",{staticClass:"fas fa-fire"}),this._v(" 热门频道\n            ")]),this._v(" "),a("a",{staticClass:"panel-block is-active"},[this._v("\n                全部频道\n            ")]),this._v(" "),a("a",{staticClass:"panel-block"},[a("span",{staticClass:"panel-icon"},[a("i",{staticClass:"fas fa-book",attrs:{"aria-hidden":"true"}})]),this._v("\n                频道\n            ")])])])}]}},74:function(t,a){t.exports={render:function(){var t=this.$createElement,a=this._self._c||t;return a("div",{staticClass:"container"},[a("div",{staticClass:"columns"},[a("threads"),this._v(" "),a("sidebar")],1)])},staticRenderFns:[]}},78:function(t,a,s){var e=s(1)(s(64),s(74),!1,null,null,null);t.exports=e.exports}});
+webpackJsonp([0],{
+
+/***/ 79:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(82)
+/* template */
+var __vue_template__ = __webpack_require__(95)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/Home.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6c0a33b2", Component.options)
+  } else {
+    hotAPI.reload("data-v-6c0a33b2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 82:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_Threads_vue__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_Threads_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__home_Threads_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_Sidebar_vue__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_Sidebar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__home_Sidebar_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: { Threads: __WEBPACK_IMPORTED_MODULE_0__home_Threads_vue___default.a, Sidebar: __WEBPACK_IMPORTED_MODULE_1__home_Sidebar_vue___default.a },
+    metaInfo: {
+        title: '看微博'
+    }
+});
+
+/***/ }),
+
+/***/ 83:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(84)
+/* template */
+var __vue_template__ = __webpack_require__(85)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/home/Threads.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-71a81de8", Component.options)
+  } else {
+    hotAPI.reload("data-v-71a81de8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 84:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            threads: [],
+            pagination: {
+                current_page: 0,
+                first_page_url: null,
+                last_page: 0,
+                last_page_url: null,
+                next_page_url: null,
+                prev_page_url: null
+            }
+        };
+    },
+
+    methods: {
+        darkTextColor: function darkTextColor(fromColor) {
+            return TinyColor(fromColor).isLight();
+        }
+    },
+    created: function created() {
+        var _this = this;
+
+        this.$client.get('/threads').then(function (_ref) {
+            var data = _ref.data;
+
+            var threads = data.threads;
+
+            _this.threads = threads.data;
+
+            setTimeout(function () {
+                // Render timeago
+                TimeAgo.render(document.querySelectorAll('.time'), 'zh_CN');
+            }, 50);
+        });
+    }
+});
+
+/***/ }),
+
+/***/ 85:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "column" }, [
+    _c("h1", { staticClass: "title" }, [_vm._v("微博总览")]),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "section",
+      { staticClass: "py-6" },
+      _vm._l(_vm.threads, function(thread) {
+        return _c("article", { staticClass: "media" }, [
+          _c(
+            "figure",
+            { staticClass: "media-left" },
+            [
+              _c("avatar", {
+                attrs: {
+                  username: thread.user.username,
+                  initials: thread.user.name.charAt(0),
+                  size: "60"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "media-content" }, [
+            _c("div", { staticClass: "content" }, [
+              _c("p", [
+                _c("strong", [_vm._v(_vm._s(thread.user.name))]),
+                _vm._v(" "),
+                _c("small", [_vm._v("@" + _vm._s(thread.user.username))]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(thread.body) +
+                    "\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(1, true)
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "media-right" }, [
+            _c("small", [
+              _c("time", {
+                staticClass: "time",
+                attrs: { datetime: thread.updated_at }
+              })
+            ])
+          ])
+        ])
+      })
+    ),
+    _vm._v(" "),
+    _vm._m(2)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "subtitle leading-normal" }, [
+      _vm._v("\n        一个可以让你发布任何内容的"),
+      _c("strong", [_vm._v("高大上微博")]),
+      _vm._v(", 好像很厉害一样，但其实就这么简单\n    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "level is-mobile" }, [
+      _c("div", { staticClass: "level-left" }, [
+        _c("a", { staticClass: "level-item" }, [
+          _c("span", { staticClass: "icon is-small" }, [
+            _c("i", { staticClass: "fas fa-reply" })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "level-item" }, [
+          _c("span", { staticClass: "icon is-small" }, [
+            _c("i", { staticClass: "fas fa-retweet" })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "level-item" }, [
+          _c("span", { staticClass: "icon is-small" }, [
+            _c("i", { staticClass: "fas fa-heart" })
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "nav",
+      {
+        staticClass: "pagination is-centered is-rounded",
+        attrs: { role: "navigation", "aria-label": "pagination" }
+      },
+      [
+        _c("a", { staticClass: "pagination-previous" }, [_vm._v("上一页")]),
+        _vm._v(" "),
+        _c("a", { staticClass: "pagination-next" }, [_vm._v("下一页")]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "pagination-list" }, [
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "pagination-link",
+                attrs: { "aria-label": "Goto page 1" }
+              },
+              [_vm._v("1")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("span", { staticClass: "pagination-ellipsis" }, [_vm._v("…")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "pagination-link",
+                attrs: { "aria-label": "Goto page 45" }
+              },
+              [_vm._v("45")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "pagination-link is-current",
+                attrs: { "aria-label": "Page 46", "aria-current": "page" }
+              },
+              [_vm._v("46")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "pagination-link",
+                attrs: { "aria-label": "Goto page 47" }
+              },
+              [_vm._v("47")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("span", { staticClass: "pagination-ellipsis" }, [_vm._v("…")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "pagination-link",
+                attrs: { "aria-label": "Goto page 86" }
+              },
+              [_vm._v("86")]
+            )
+          ])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-71a81de8", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 86:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(87)
+/* template */
+var __vue_template__ = __webpack_require__(94)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/home/Sidebar.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3a8c373f", Component.options)
+  } else {
+    hotAPI.reload("data-v-3a8c373f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 87:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ComposeNewThread__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ComposeNewThread___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ComposeNewThread__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HotChannels__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HotChannels___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__HotChannels__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: { ChannelList: __WEBPACK_IMPORTED_MODULE_1__HotChannels___default.a, ComposeNewThread: __WEBPACK_IMPORTED_MODULE_0__ComposeNewThread___default.a }
+});
+
+/***/ }),
+
+/***/ 88:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(89)
+/* template */
+var __vue_template__ = __webpack_require__(90)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/home/ComposeNewThread.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-14b98205", Component.options)
+  } else {
+    hotAPI.reload("data-v-14b98205", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 89:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'ComposeNewThread',
+    methods: {
+        composeDidClick: function composeDidClick() {
+            this.$modal.show('compose-thread');
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 90:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "mb-4 p-2" }, [
+    _c("div", { staticClass: "card rounded-lg shadow-subtle" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("footer", { staticClass: "card-footer border-0 pb-2" }, [
+        _c(
+          "a",
+          {
+            staticClass:
+              "card-footer-item button rounded-full is-success border-0 mx-6 my-3 has-text-weight-bold shadow-subtle",
+            attrs: { href: "#" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.composeDidClick($event)
+              }
+            }
+          },
+          [
+            _c("i", { staticClass: "fas fa-plus-circle" }),
+            _vm._v(" 发微博\n            ")
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "header",
+      { staticClass: "card-header has-background-primary rounded-t-lg" },
+      [
+        _c("p", { staticClass: "card-header-title has-text-white" }, [
+          _c("i", { staticClass: "fas fa-comment-alt" }),
+          _vm._v(" 说点什么...\n            ")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-content" }, [
+      _c("div", { staticClass: "content" }, [
+        _c("p", [
+          _vm._v(
+            "\n                    最近发生了什么新鲜事？\n                    "
+          ),
+          _c("br"),
+          _vm._v("\n                    赶快分享一下吧！\n                ")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-14b98205", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 91:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(92)
+/* template */
+var __vue_template__ = __webpack_require__(93)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/home/HotChannels.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-033a3520", Component.options)
+  } else {
+    hotAPI.reload("data-v-033a3520", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 92:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'hot-channels'
+});
+
+/***/ }),
+
+/***/ 93:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "mb-4 p-2" }, [
+      _c(
+        "nav",
+        {
+          staticClass:
+            "panel overflow-hidden rounded-lg has-background-white shadow-subtle"
+        },
+        [
+          _c(
+            "p",
+            {
+              staticClass:
+                "panel-heading panel-heading has-text-weight-bold has-text-white has-background-primary text-base py-4 rounded-t-lg"
+            },
+            [
+              _c("i", { staticClass: "fas fa-fire" }),
+              _vm._v(" 热门频道\n        ")
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass:
+                "panel-block is-active border-0 border-b-2 border-l-4"
+            },
+            [_vm._v("\n            全部频道\n        ")]
+          ),
+          _vm._v(" "),
+          _c("a", { staticClass: "panel-block border-0" }, [
+            _c("span", { staticClass: "panel-icon" }, [
+              _c("i", {
+                staticClass: "fas fa-book",
+                attrs: { "aria-hidden": "true" }
+              })
+            ]),
+            _vm._v("\n            频道\n        ")
+          ])
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-033a3520", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 94:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "column is-one-quarter" }, [
+    _c(
+      "div",
+      { staticClass: "sticky pin-t" },
+      [
+        _c(
+          "transition",
+          { attrs: { name: "slide-fade" } },
+          [_vm.App.authenticated ? _c("compose-new-thread") : _vm._e()],
+          1
+        ),
+        _vm._v(" "),
+        _c("channel-list")
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3a8c373f", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 95:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      { staticClass: "columns" },
+      [_c("threads"), _vm._v(" "), _c("sidebar")],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6c0a33b2", module.exports)
+  }
+}
+
+/***/ })
+
+});

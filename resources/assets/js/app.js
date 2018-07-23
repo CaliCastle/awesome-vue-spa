@@ -8,13 +8,14 @@ require('./bootstrap')
 
 import Router from 'vue-router'
 import Meta from 'vue-meta'
+import router from './router'
+import App from './views/App.vue'
+import Avatar from 'vue-avatar'
 
 Vue.use(Router)
 Vue.use(Meta)
 
-import router from './router'
-import App from './views/App.vue'
-
+Vue.component('avatar', Avatar)
 Vue.component('logo', require('./components/Logo.vue'))
 
 const app = new Vue({
