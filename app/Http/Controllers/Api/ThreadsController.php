@@ -13,7 +13,7 @@ class ThreadsController
      */
     public function index()
     {
-        $threads = Thread::latest()->with('channel', 'user')->paginate();
+        $threads = Thread::latest()->with('user')->paginate();
 
         return compact('threads');
     }

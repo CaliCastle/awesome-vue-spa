@@ -14,18 +14,19 @@
             </div>
         </div>
         <div class="hero-foot">
-            <nav class="tabs is-boxed is-fullwidth">
+            <nav class="tabs is-boxed">
                 <div class="container">
                     <ul>
                         <router-link tag="li" to="/">
-                            <a class="navbar-item" href="/">看微博</a>
+                            <a class="navbar-item" href="/">
+                                <i class="fas fa-compass"></i>&nbsp;看微博
+                            </a>
                         </router-link>
                         <router-link tag="li" :to="{ name: 'rank' }">
-                            <a class="navbar-item" href="/rank">排行榜</a>
+                            <a class="navbar-item" href="/rank">
+                                <i class="fas fa-sort-amount-up"></i>&nbsp;排行榜
+                            </a>
                         </router-link>
-                        <li>
-                            <a>页面</a>
-                        </li>
                     </ul>
                 </div>
             </nav>

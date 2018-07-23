@@ -23,6 +23,9 @@ class Auth {
         return false
     }
 
+    /**
+     * Fetch user info from API.
+     */
     fetchUser() {
         ApiClient.get('/me')
             .then(({data}) => {
@@ -49,7 +52,13 @@ class Auth {
         Event.fire('user-logged-in')
     }
 
+    /**
+     * Log the user out.
+     */
     logout() {
+        ApiClient.post('/logout')
+            .then(() => {})
+
         this.token = null
         this.user = null
 
