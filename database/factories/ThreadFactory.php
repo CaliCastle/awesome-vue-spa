@@ -15,6 +15,6 @@ $factory->define(App\Thread::class, function () {
     $faker = \Faker\Factory::create(app()->getLocale());
 
     return [
-        'body' => $faker->sentences(3, true)
+        'body' => $faker->sentences(rand(3, 15), true)
     ];
 });

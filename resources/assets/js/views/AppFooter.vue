@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer">
+    <footer class="footer py-10">
         <div class="content has-text-centered">
             <p>
                 开发者：<a href="https://calicastle.com" target="_blank">Cali Castle</a>.

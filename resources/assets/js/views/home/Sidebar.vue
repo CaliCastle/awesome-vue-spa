@@ -1,19 +1,15 @@
 <template>
     <div class="column is-one-quarter">
         <div class="sticky pin-t">
-            <transition name="slide-fade">
-                <compose-new-thread v-if="App.authenticated"></compose-new-thread>
-            </transition>
-            <channel-list/>
+            <trending-topics/>
         </div>
     </div>
 </template>
 
 <script>
-    import ComposeNewThread from "./ComposeNewThread";
-    import ChannelList from "./HotChannels";
+    import TrendingTopics from "./TrendingTopics";
 
     export default {
-        components: {ChannelList, ComposeNewThread}
+        components: {TrendingTopics}
     }
 </script>

@@ -1,18 +1,20 @@
 <template>
     <div class="container">
         <div class="columns">
-            <threads></threads>
-            <sidebar></sidebar>
+            <profile-bar/>
+            <threads/>
+            <sidebar/>
         </div>
     </div>
 </template>
 
 <script>
-    import Threads from './home/Threads.vue'
-    import Sidebar from './home/Sidebar.vue'
+    import Threads from './home/Threads'
+    import Sidebar from './home/Sidebar'
+    import ProfileBar from "./home/ProfileBar";
 
     export default {
-        components: { Threads, Sidebar },
+        components: {ProfileBar, Threads, Sidebar },
         metaInfo: {
             title: '看微博'
         }

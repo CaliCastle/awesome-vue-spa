@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\User;
 use DB;
+use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -36,6 +37,37 @@ class AuthController extends Controller
         // specified password belongs to this user.
         if (! auth()->validate($request->only(['email', 'password']))) {
             return $this->jsonValidationError('密码错误');
+        }
+
+        return $this->attemptIssuingToken($request, $user);
+    }
+
+    /**
+     * Create a register request.
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|Response
+     * @throws \Exception
+     */
+    public function register(Request $request)
+    {
+        // Form request validation.
+        $this->validate($request, [
+            'name'     => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users',
+            'email'    => 'required|string|max:255|email|unique:users',
+            'password' => 'required|string|min:6|max:255',
+        ]);
+
+        $user = User::create([
+            'name'     => $request->input('name'),
+            'username' => $request->input('username'),
+            'email'    => $request->input('email'),
+            'password' => Hash::make($request->input('password'))
+        ]);
+        if (! $user instanceof User) {
+            return $this->jsonValidationError('用户注册失败');
         }
 
         return $this->attemptIssuingToken($request, $user);

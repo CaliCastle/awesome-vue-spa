@@ -37,14 +37,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Thread::class);
     }
-
-    /**
-     * User's channels.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function channels()
-    {
-        return $this->hasMany(Channel::class);
-    }
 }

@@ -1,13 +1,9 @@
 <template>
     <div class="column">
-        <h1 class="title">微博总览</h1>
-        <h2 class="subtitle leading-normal">
-            一个可以让你发布任何内容的<strong>高大上微博</strong>, 好像很厉害一样，但其实就这么简单
-        </h2>
         <section class="py-6">
             <article class="media" v-for="thread in threads">
-                <figure class="media-left">
-                    <avatar :username="thread.user.username" :initials="thread.user.name.charAt(0)" size="60"></avatar>
+                <figure class="media-left sticky" style="top: .75rem;">
+                    <avatar :username="thread.user.username" :initials="thread.user.name.charAt(0)"></avatar>
                 </figure>
                 <div class="media-content">
                     <div class="content">
@@ -31,7 +27,7 @@
                         </div>
                     </nav>
                 </div>
-                <div class="media-right">
+                <div class="media-right sticky" style="top: .75rem;">
                     <small><time class="time" :datetime="thread.updated_at"></time></small>
                 </div>
             </article>

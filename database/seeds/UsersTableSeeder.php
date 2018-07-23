@@ -11,8 +11,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 30)->create()->each(function ($user) {
-            $user->channels()->save(factory(App\Channel::class)->make());
+        factory(App\User::class, 45)->create()->each(function ($user) {
+            // Make a thread
+            $thread = factory(App\Thread::class)->make();
+
+            // Bind thread to user
+            $user->threads()->save($thread);
         });
     }
 }
