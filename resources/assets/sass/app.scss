@@ -87,6 +87,12 @@ body {
 	}
 }
 
+.vue-avatar--wrapper {
+	span {
+		transform: translateY(1px);
+	}
+}
+
 .pop-out-enter-active,
 .pop-out-leave-active {
 	transition: all 0.5s;

@@ -3,7 +3,18 @@
         <div class="sticky pin-t">
             <section class="mb-4 p-2">
                 <transition name="slide-fade">
-                    <div class="card" v-if="App.authenticated" key="user"></div>
+                    <div class="card rounded-lg overflow-hidden shadow-subtle" v-if="App.authenticated" key="user">
+                        <div class="w-full h-16" style="background: linear-gradient(to right bottom, #8A4D76, #8A4D76);"></div>
+                        <div class="columns">
+                            <div class="column is-one-third flex justify-center items-center p-0 ml-3 -mt-8">
+                                <avatar :username="App.user.username" :initials="App.user.name.charAt(0)" class="border-4 border-white pointer-events-none" size="66"></avatar>
+                            </div>
+                            <div class="column px-0 pr-3 pt-4">
+                                <b class="p-0 mb-2 text-lg">{{ App.user.name }}</b>
+                                <small class="block mb-2">@{{ App.user.username }}</small>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card rounded-lg shadow-subtle" key="guest" v-else>
                         <header class="card-header has-background-success rounded-t-lg">
                             <p class="card-header-title has-text-white">

@@ -3,7 +3,7 @@
         <section class="py-6">
             <article class="media" v-for="thread in threads">
                 <figure class="media-left sticky" style="top: .75rem;">
-                    <avatar :username="thread.user.username" :initials="thread.user.name.charAt(0)"></avatar>
+                    <avatar :username="thread.user.username" :initials="thread.user.name.charAt(0)" class="pointer-events-none"></avatar>
                 </figure>
                 <div class="media-content">
                     <div class="content">
