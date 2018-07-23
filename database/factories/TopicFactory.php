@@ -11,11 +11,10 @@
 |
 */
 
-$factory->define(App\Channel::class, function () {
+$factory->define(App\Topic::class, function () {
     $faker = \Faker\Factory::create(app()->getLocale());
 
     return [
-        'name'  => $faker->name,
-        'color' => str_replace('#', '', $faker->hexColor)
+        'name'  => $faker->word
     ];
 });

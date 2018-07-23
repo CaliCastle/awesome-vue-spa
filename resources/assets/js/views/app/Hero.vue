@@ -1,5 +1,5 @@
 <template>
-    <section class="hero is-medium is-primary is-bold">
+    <section class="hero is-small is-primary is-bold">
         <div class="hero-head">
             <navbar></navbar>
         </div>

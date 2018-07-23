@@ -12,7 +12,7 @@ class Thread extends Model
     ];
 
     protected $hidden = [
-        'user_id', 'channel_id', 'created_at'
+        'user_id', 'created_at'
     ];
 
     protected $perPage = '20';
@@ -25,15 +25,5 @@ class Thread extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Channel relationship.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function channel()
-    {
-        return $this->belongsTo(Channel::class);
     }
 }
