@@ -29,10 +29,10 @@
                             </div>
                         </div>
                         <footer class="card-footer border-0 pb-2">
-                            <a href="#" class="card-footer-item button rounded is-success border-0 ml-4 mr-2 my-3 has-text-weight-bold text-sm shadow-lg" @click.prevent="loginDidClick">
+                            <a href="#" class="card-footer-item button rounded is-success border-0 ml-4 mr-2 my-3 has-text-weight-bold text-sm shadow-subtle" @click.prevent="loginDidClick">
                                 <i class="fas fa-sign-in-alt"></i>&nbsp;登陆
                             </a>
-                            <a href="#" class="card-footer-item button rounded border-0 ml-2 mr-4 my-3 has-text-weight-bold text-sm shadow-lg" @click.prevent="registerDidClick">
+                            <a href="#" class="card-footer-item button rounded border-0 ml-2 mr-4 my-3 has-text-weight-bold text-sm shadow-subtle" @click.prevent="registerDidClick">
                                 <i class="fas fa-plus-circle"></i>&nbsp;注册
                             </a>
                         </footer>
