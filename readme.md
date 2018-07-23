@@ -6,6 +6,7 @@
 
 - Laravel
 - Vue.js 
+- Tailwind
 - Bulma
 
 ## License
