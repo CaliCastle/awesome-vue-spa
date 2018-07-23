@@ -7,7 +7,8 @@
             </transition>
         </section>
         <app-footer/>
-        <login-modal />
+        <login-modal/>
+        <compose-thread-modal/>
     </main>
 </template>
 
@@ -15,9 +16,10 @@
     import Hero from './app/Hero.vue'
     import LoginModal from '../components/modals/LoginModal.vue'
     import AppFooter from "./AppFooter";
+    import ComposeThreadModal from "../components/modals/ComposeThreadModal";
 
     export default {
-        components: { AppFooter, Hero, LoginModal },
+        components: {AppFooter, Hero, LoginModal, ComposeThreadModal},
         metaInfo: {
             title: '主页',
             titleTemplate: (titleChunk => {

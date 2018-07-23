@@ -7,9 +7,7 @@
         <section class="py-6">
             <article class="media" v-for="thread in threads">
                 <figure class="media-left">
-                    <div class="image is-64x64 rounded-lg flex items-center justify-center" :style="{ backgroundColor: '#' + thread.channel.color, color: darkTextColor(thread.channel.color) ? '#111' : '#fff' }">
-                        <b class="is-size-3" v-text="thread.user.name.charAt(0)"></b>
-                    </div>
+                    <avatar :username="thread.user.username" :initials="thread.user.name.charAt(0)" size="60"></avatar>
                 </figure>
                 <div class="media-content">
                     <div class="content">

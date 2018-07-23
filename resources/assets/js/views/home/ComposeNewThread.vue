@@ -9,12 +9,14 @@
             <div class="card-content">
                 <div class="content">
                     <p>
-                        还在等什么？赶快来加入微博大家庭吧！
+                        最近发生了什么新鲜事？
+                        <br>
+                        赶快分享一下吧！
                     </p>
                 </div>
             </div>
             <footer class="card-footer border-0 pb-2">
-                <a href="#" class="card-footer-item button rounded-full is-success border-0 mx-6 my-3 has-text-weight-bold shadow-subtle">
+                <a href="#" class="card-footer-item button rounded-full is-success border-0 mx-6 my-3 has-text-weight-bold shadow-subtle" @click.prevent="composeDidClick">
                     <i class="fas fa-plus-circle"></i>&nbsp;发微博
                 </a>
             </footer>
@@ -23,6 +25,11 @@
 </template>
 <script>
     export default {
-        name: 'ComposeNewThread'
+        name: 'ComposeNewThread',
+        methods: {
+            composeDidClick() {
+                this.$modal.show('compose-thread')
+            }
+        },
     }
 </script>
