@@ -20,5 +20,7 @@ Route::middleware('guest:api')->group(function () {
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/me', 'Api\AuthController@me');
+    Route::get('/me/profile', 'Api\AuthController@profile');
+
     Route::post('/logout', 'Api\AuthController@logout');
 });

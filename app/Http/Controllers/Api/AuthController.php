@@ -123,6 +123,18 @@ class AuthController extends Controller
     }
 
     /**
+     * Get user profile.
+     *
+     * @return mixed
+     */
+    public function profile()
+    {
+        $user = $this->me();
+
+        return $user->profile;
+    }
+
+    /**
      * Log the user out.
      *
      * @return \Illuminate\Http\JsonResponse
