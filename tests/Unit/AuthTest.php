@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\User;
+use Laravel\Passport\Passport;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -36,5 +37,17 @@ class AuthTest extends TestCase
                 'password' => $password
             ])
         );
+    }
+
+    /** @test */
+    public function a_user_can_authenticate_via_oauth()
+    {
+        $user = factory(User::class)->create();
+
+        Passport::actingAs($user);
+
+        $response = $this->get('/api/me');
+
+        $response->assertExactJson($user->toArray());
     }
 }

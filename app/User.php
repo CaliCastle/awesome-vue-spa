@@ -37,4 +37,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Thread::class);
     }
+
+    /**
+     * Get computed `profile` attribute.
+     *
+     * @return array
+     */
+    public function getProfileAttribute()
+    {
+        return [
+            'threadsCount' => $this->threads()->count(),
+            'following'    => 0,
+            'followers'    => 0
+        ];
+    }
 }
