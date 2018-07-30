@@ -1,6 +1,5 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/pace.css": "/css/pace.css",
-    "/css/utilities.css": "/css/utilities.css",
-    "/css/app.css": "/css/app.css"
+    "/assets/js/app.js": "/assets/js/app.js",
+    "/assets/css/utils.css": "/assets/css/utils.css",
+    "/assets/css/app.css": "/assets/css/app.css"
 }

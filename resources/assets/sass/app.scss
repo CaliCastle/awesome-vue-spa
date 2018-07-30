@@ -1,28 +1,12 @@
 @charset "utf-8";
 
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,500,700');
+// Variables predefine
+@import "variables";
 
-// Set brand colors
-$purple: #8A4D76;
-$pink: #FA7C91;
-$brown: #757763;
-$beige-light: #dcddd9;
-$beige-lighter: #f7f8f3;
-
-// Update global variables
-$family-sans-serif: "Nunito", system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Helvetica Neue, sans-serif;
-$grey-dark: $brown;
-$grey-light: $beige-light;
-$primary: $purple;
-$link: $brown;
-$widescreen-enabled: false;
-$fullhd-enabled: false;
-
-// Update some component variables
-$body-background-color: $beige-lighter;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
+// Import font awesome icons
+$fa-font-path: '../fonts/icons';
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
 
 // Import components
 @import "~bulma/sass/utilities/all";

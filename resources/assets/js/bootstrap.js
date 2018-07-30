@@ -1,80 +1,109 @@
-window._ = require('lodash')
+// window._ = require('lodash')
+
 window.axios = require('axios')
 window.axios.defaults.headers.common = {
-    'X-Requested-With': 'XMLHttpRequest'
+	'X-Requested-With': 'XMLHttpRequest'
+}
+window.TimeAgo = require('timeago.js')
+window.TinyColor = require('tinycolor2')
+
+/**
+ * 引入工具类
+ */
+// import Vue from 'vue'
+import { Client }       from './classes/http/Client'
+import { LocalStorage } from './classes/storage/LocalStorage'
+import Event            from './classes/Event'
+import Form             from './classes/form/Form'
+import Auth             from './classes/Auth'
+
+/**
+ * 绑定工具全局访问
+ */
+window.Client = Client
+window.Local = new LocalStorage()
+window.Event = new Event()
+window.Form = Form
+window.Auth = new Auth()
+
+/**
+ * Bind model classes
+ */
+import User   from "./classes/models/User";
+
+window.Model = {
+	User
 }
 
 /**
- * Bootstrap Api Client
+ * Vue设置
  */
-import { ApiClient } from './classes/http/ApiClient'
-
-let baseApiUrl = document.querySelector('meta[name="base-api-url"]').content
-
-window.ApiClient = new ApiClient(baseApiUrl)
-// Bind to Vue instances
-Vue.prototype.$client = window.ApiClient
-
-import Vue from 'vue'
-import Event from './classes/Event'
-import Form from './classes/form/Form'
-import Auth from './classes/Auth'
-import User from './classes/User'
-
-window.Vue = Vue
-window.Event = Event
-window.Form = Form
-window.Auth = Auth
-window.User = User
+import Vue    from 'vue'
 
 /**
- * Global access for store, `single source of truth`.
+ * 创建执行api请求的客户端
  *
- * @type {CombinedVueInstance<V extends Vue, Object, Object, Object, Record<never, any>>}
+ * @param baseUrl
  */
-window.App = new Vue({
-    data: {
-        user: Auth.user,
-        authenticated: Auth.checkAuthentication()
-    },
-    created() {
-        this.name = document.querySelector('meta[name="app-name"]').content
+Vue.prototype.makeClient = (baseUrl: string) => {
+	// 绑定api客户端实例
+	this.$client = new Client(baseUrl)
+	// 全局访问
+	window.Client = this.$client
+}
 
-        Event.listen('user-logged-in', () => {
-            this.authenticated = true
-            this.user = Auth.user
-        })
+Vue.prototype.$event = window.Event
 
-        Event.listen('user-logged-out', () => {
-            this.authenticated = false
-            this.user = null
-        })
-    },
+/**
+ * 创建唯一app
+ */
+window.$app = new Vue({
+	data: {
+		user: window.Auth.user,
+		authenticated: window.Auth.checkAuthentication()
+	},
+	methods: {
+		toggleUserState(loggedIn: boolean) {
+			this.authenticated = loggedIn
+			this.user = loggedIn ? window.Auth.user : null
+		}
+	},
+	created() {
+		this.$event.listen(this.$event.types.UserLoggedIn, () => {
+			this.toggleUserState(true)
+		})
+
+		this.$event.listen(this.$event.types.UserLoggedOut, () => {
+			this.toggleUserState(false)
+		})
+	},
 })
+Vue.prototype.$app = window.$app
 
 /**
- * Assign to global Vue.
- *
- * @type {CombinedVueInstance<V, extends, Vue, Object, Object, Object, Record<never, any>>}
+ * 使用Vue路由器
  */
-Vue.prototype.App = App
+import Router from 'vue-router'
+
+Vue.use(Router)
 
 /**
- * Use Vue-Modal.
+ * 使用Vue-Meta
+ */
+import Meta   from 'vue-meta'
+
+Vue.use(Meta)
+
+/**
+ * 使用Vue弹出框
  */
 import VModal from 'vue-js-modal'
+
 Vue.use(VModal)
 
 /**
- * Bootstrap TimeAgo plugin.
+ * Use Vue-Avatar
  */
-import timeago from 'timeago.js'
+import Avatar from 'vue-avatar'
 
-window.TimeAgo = timeago()
-
-/**
- * Bootstrap TinyColor plugin.
- */
-import tinycolor from 'tinycolor2'
-
-window.TinyColor = tinycolor
+Vue.component('avatar', Avatar)

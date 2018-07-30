@@ -49,7 +49,7 @@
 </template>
 
 <script>
-    const MODAL_WIDTH = 420
+	const MODAL_WIDTH = 420
     export default {
         name: 'LoginModal',
         data() {
@@ -69,7 +69,7 @@
             onSubmitForm() {
                 this.form.post('/login')
                     .then(data => {
-                        Auth.login(data.token, new User(data.user))
+                        Auth.login(data.token, new Model.User(data.user))
 
                         this.$modal.hide('login')
                     })

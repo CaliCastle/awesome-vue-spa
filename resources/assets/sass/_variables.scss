@@ -1,8 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,500,700');
 
-// Body
-$body-bg: #f5f8fa;
+// Set brand colors
+$purple: #8A4D76;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #dcddd9;
+$beige-lighter: #f7f8f3;
 
-// Typography
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+// Update global variables
+$family-sans-serif: "Nunito", system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Helvetica Neue, sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $brown;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some component variables
+$body-background-color: $beige-lighter;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+@import "plugins/pace";

@@ -63,20 +63,15 @@
                 }
             }
         },
-        methods: {
-            darkTextColor(fromColor) {
-                return TinyColor(fromColor).isLight()
-            }
-        },
         created() {
-            this.$client.get('/threads').then(({ data }) => {
+            Client.get('/threads').then(({ data }) => {
                 const threads = data.threads
 
                 this.threads = threads.data
 
                 setTimeout(() => {
                     // Render timeago
-                    TimeAgo.render(document.querySelectorAll('.time'), 'zh_CN')
+                    new TimeAgo().render(document.querySelectorAll('.time'), 'zh_CN')
                 }, 50)
             })
         }

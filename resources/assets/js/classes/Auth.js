@@ -1,80 +1,86 @@
-import Event from "./Event";
+import User             from './models/User'
+import { LocalStorage } from './storage/LocalStorage'
+
+const Local = new LocalStorage()
 
 class Auth {
-    constructor() {
-        this.token = window.localStorage.getItem(this.tokenStorageKey())
 
-        let userData = window.localStorage.getItem(this.userStorageKey())
-        this.user = userData ? JSON.parse(userData) : null
-    }
+	// Properties
+	token: ?string
+	user: ?User
 
-    /**
-     * Setup access token for OAuth.
-     */
-    checkAuthentication() {
-        if (this.token != null) {
-            axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`
+	constructor() {
+		this.token = Local.get(Local.keys.OAuth.Token)
+		this.user = User.parse(Local.get(Local.keys.OAuth.User))
+	}
 
-            this.fetchUser()
+	/**
+	 * 检查用户状态登陆与否
+	 *
+	 * @returns {boolean}
+	 */
+	checkAuthentication(): boolean {
+		if (this.token != null) {
+			axios.defaults.headers.common[ 'Authorization' ] = `Bearer ${this.token}`
 
-            return true
-        }
+			this.fetchUser()
 
-        return false
-    }
+			return true
+		}
 
-    /**
-     * Fetch user info from API.
-     */
-    fetchUser() {
-        ApiClient.get('/me')
-            .then(({data}) => {
-                this.user = new User(data)
-            })
-            .catch(error => {})
-    }
+		return false
+	}
 
-    /**
-     * Persist the user data when they're authenticated.
-     *
-     * @param token
-     * @param user
-     */
-    login(token, user) {
-        window.localStorage.setItem(this.tokenStorageKey(), token)
-        window.localStorage.setItem(this.userStorageKey(), JSON.stringify(user))
+	/**
+	 * 从API读取用户信息
+	 */
+	fetchUser() {
+		Client.get('/me')
+			.then(({ data }) => {
+				this.user = User.parse(data)
+			})
+			.catch(error => {
+			})
+	}
 
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+	/**
+	 * 验证成功，存入用户数据
+	 *
+	 * @param token
+	 * @param user
+	 */
+	login(token, user) {
+		this.token = token
+		this.user = user
 
-        this.token = token
-        this.user = user
+		axios.defaults.headers.common[ 'Authorization' ] = `Bearer ${token}`
 
-        Event.fire('user-logged-in')
-    }
+		Local.save(Local.keys.OAuth.Token, token)
+		Local.save(Local.keys.OAuth.User, JSON.stringify(user))
 
-    /**
-     * Log the user out.
-     */
-    logout() {
-        ApiClient.post('/logout')
-            .then(() => {})
+		Event.fire(Event.types.UserLoggedIn)
+	}
 
-        this.token = null
-        this.user = null
+	/**
+	 * 注销当前用户
+	 */
+	logout() {
+		Client.post('/logout')
+			.then(() => {
+			})
 
-        window.localStorage.removeItem(this.tokenStorageKey())
-        window.localStorage.removeItem(this.userStorageKey())
+		this.reset()
 
-        Event.fire('user-logged-out')
-    }
+		Local.delete(Local.keys.OAuth.Token)
+		Local.delete(Local.keys.OAuth.User)
 
-    tokenStorageKey() {
-        return 'auth-token'
-    }
+		Event.fire(Event.types.UserLoggedOut)
+	}
 
-    userStorageKey() {
-        return 'auth-user'
-    }
+	reset() {
+		this.token = null
+		this.user = null
+	}
 }
 
-export default new Auth()
+export default Auth

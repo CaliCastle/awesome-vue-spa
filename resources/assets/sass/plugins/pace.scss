@@ -12,7 +12,7 @@
 }
 
 .pace .pace-progress {
-	background: #ff8976;
+	background: #fb91dc;
 	position: fixed;
 	z-index: 2000;
 	top: 0;
@@ -27,7 +27,7 @@
 	right: 0px;
 	width: 100px;
 	height: 100%;
-	box-shadow: 0 0 10px #ff8976, 0 0 5px #ff8976;
+	box-shadow: 0 0 10px #fb91dc, 0 0 5px #fb91dc;
 	opacity: 1;
 	transform: rotate(3deg) translate(0px, -4px);
 }
@@ -41,8 +41,8 @@
 	width: 14px;
 	height: 14px;
 	border: solid 2px transparent;
-	border-top-color: #ff8976;
-	border-left-color: #ff8976;
+	border-top-color: #fb91dc;
+	border-left-color: #fb91dc;
 	border-radius: 10px;
 	animation: pace-spinner 400ms linear infinite;
 }

@@ -23,14 +23,27 @@
 
     export default {
         components: {AppFooter, Hero, LoginModal, RegisterModal, ComposeThreadModal},
-        metaInfo: {
-            title: '主页',
-            titleTemplate: (titleChunk => {
-                return titleChunk ? `${titleChunk} - ${App.name}` : App.name;
-            }),
-        },
-        data() {
-            return {}
-        }
+		props: {
+			app: {
+				type: Object,
+				default: null
+			},
+		},
+		metaInfo() {
+			return {
+				title: '主页',
+				titleTemplate: (titleChunk => {
+					// 设置后台管理页面标题格式
+					return `${titleChunk} - ${this.app.name}`
+				}),
+			}
+		},
+		created() {
+			// 创建api客户端
+			this.$root.makeClient(this.app.apiBaseUrl)
+
+			// 绑定app到$root
+			this.$root.app = this.app
+		}
     }
 </script>

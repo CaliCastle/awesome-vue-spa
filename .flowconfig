@@ -1,0 +1,15 @@
+[ignore]
+<PROJECT_ROOT>/vendor
+<PROJECT_ROOT>/node_modules
+<PROJECT_ROOT>/storage
+<PROJECT_ROOT>/tests
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+
+[strict]

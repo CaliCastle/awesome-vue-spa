@@ -5,14 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="base-api-url" content="{{ url('/api') }}/">
-    <meta name="app-name" content="{{ config('app.name') }}">
 
     <title>@yield('', '主页') - {{ config('app.name') }}</title>
 
-    <link rel="stylesheet" href="{{ mix('/css/pace.css') }}">
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link rel="stylesheet" href="{{ mix('css/utilities.css') }}">
+    <link rel="preload" href="/assets/js/pace.min.js" as="script">
+    <link rel="preload" href="{{ mix('/assets/css/utils.css') }}" as="style">
+
+    <script src="/assets/js/pace.min.js"></script>
+
+    @stack('head')
+    <link rel="stylesheet" href="{{ mix('/assets/css/utils.css') }}">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -23,12 +25,18 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-    <div id="app">
-        <app></app>
+
+    <div id="@yield('vue-root-id')">
+
+        <app :app=@json($appConfig)>
+            @yield('app.body')
+        </app>
+
     </div>
 
-    <script src="/js/pace.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
-    <script src="{{ mix('js/app.js') }}"></script>
+    @stack('body.scripts')
+
+    <noscript></noscript>
+
 </body>
 </html>

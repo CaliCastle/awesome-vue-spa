@@ -6,19 +6,34 @@
 
 require('./bootstrap')
 
-import Router from 'vue-router'
-import Meta from 'vue-meta'
+// 引入Vue
+import Vue from 'vue'
+
+// 引入包装库
+require('./bootstrap')
+
+// 导入路由文件
 import router from './router'
-import App from './views/App.vue'
-import Avatar from 'vue-avatar'
+// 导入components
+import App    from './views/App'
 
-Vue.use(Router)
-Vue.use(Meta)
-
-Vue.component('avatar', Avatar)
 Vue.component('logo', require('./components/Logo.vue'))
 
+// 生成Vue实例
 const app = new Vue({
-    components: { App },
-    router,
-}).$mount('#app')
+	router,
+	components: {
+		App
+	},
+	data() {
+		return {
+			app: null
+		}
+	},
+	methods: {},
+	created() {
+
+	}
+})
+
+app.$mount('#app')

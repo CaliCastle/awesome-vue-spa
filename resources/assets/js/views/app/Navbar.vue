@@ -14,14 +14,14 @@
             <div id="navbarMenuHeroA" class="navbar-menu">
                 <div class="navbar-end">
                     <transition name="slide-right-fade" mode="out-in">
-                        <div class="navbar-item" v-if="App.authenticated" key="user">
+                        <div class="navbar-item" v-if="$app.authenticated" key="user">
                             <div class="dropdown" :class="{ 'is-active': dropdownOpen }">
                                 <div class="dropdown-trigger">
                                     <button class="button is-primary" aria-haspopup="true" aria-controls="dropdown-menu" @click.prevent="toggleDropdown">
                                         <span class="icon">
                                             <i class="fas fa-user"></i>
                                         </span>
-                                        <span>{{ App.user.name }}</span>
+                                        <span>{{ $app.user.name }}</span>
                                         <span class="icon is-small">
                                             <i class="fas fa-angle-down" aria-hidden="true"></i>
                                         </span>
@@ -70,7 +70,7 @@
             },
             logoutDidClick() {
                 this.onDropdownClick()
-                Auth.logout()
+                // Auth.logout()
             },
             toggleDropdown() {
                 this.dropdownOpen = !this.dropdownOpen

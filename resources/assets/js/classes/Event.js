@@ -1,17 +1,28 @@
 import Vue from 'vue'
 
+const event_types = Object.freeze({
+	UserLoggedIn: 'user-logged-in',
+	UserLoggedOut: 'user-logged-out',
+})
+
 class Event {
-    constructor() {
-        this.vue = new Vue()
-    }
 
-    fire(eventName, data = null) {
-        this.vue.$emit(eventName, data)
-    }
+	// Properties
+	vue: Vue
+	types: Object
 
-    listen(eventName, callback) {
-        this.vue.$on(eventName, callback)
-    }
+	constructor() {
+		this.vue = new Vue()
+		this.types = event_types
+	}
+
+	fire(eventName, data = null) {
+		this.vue.$emit(eventName, data)
+	}
+
+	listen(eventName, callback) {
+		this.vue.$on(eventName, callback)
+	}
 }
 
-export default new Event()
+export default Event

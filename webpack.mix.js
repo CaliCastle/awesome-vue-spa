@@ -1,5 +1,5 @@
-let mix = require('laravel-mix');
-let tailwindcss = require('tailwindcss');
+let mix = require('laravel-mix')
+let tailwind = require('tailwindcss')
 
 /*
  |--------------------------------------------------------------------------
@@ -12,20 +12,50 @@ let tailwindcss = require('tailwindcss');
  |
  */
 
+/**
+ * Predefine paths.
+ *
+ * @type {string}
+ */
+const assetsPath = 'public/assets'
+const cssPath = `${assetsPath}/css`
+const jsPath = `${assetsPath}/js`
+
+/**
+ * Predefine paths.
+ *
+ * @type {string}
+ */
+const resourceBuildPath = 'resources/assets'
+const sassBuildPath = `${resourceBuildPath}/sass`
+const jsBuildPath = `${resourceBuildPath}/js`
+
+// Setup chunk file for dynamic importing.
 mix.webpackConfig({
-    output: {
-        publicPath: '/',
-        chunkFilename: 'js/chunk/[name].js?[chunkhash]'
-    },
+	output: {
+		publicPath: '/',
+		chunkFilename: 'assets/js/chunks/[name].js?[chunkhash]'
+	}
 })
 
-mix.sass('resources/assets/sass/plugins/pace.scss', 'public/css')
+// Compile tailwindcss.
+mix.sass(`${sassBuildPath}/plugins/tailwind.scss`, `${cssPath}/utils.css`)
+	.options({
+		processCssUrls: false,
+		postCss: [tailwind('tailwind.js')]
+	})
 
-mix.sass('resources/assets/sass/utilities.scss', 'public/css')
-    .options({
-        processCssUrls: false,
-        postCss: [ tailwindcss('tailwind.js') ]
-    });
+// Copy font awesome web fonts.
+mix.copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/assets/fonts/icons')
 
-mix.js('resources/assets/js/app.js', 'public/js')
-    .sass('resources/assets/sass/app.scss', 'public/css');
+/**
+ * Customer app bundling.
+ */
+mix.js(`${jsBuildPath}/app.js`, jsPath)
+	.sass(`${sassBuildPath}/app.scss`, cssPath)
+
+/**
+ * Admin app bundling.
+ */
+// mix.js(`${jsBuildPath}/admin/app.js`, `${jsPath}/admin`)
+// 	.sass(`${sassBuildPath}/admin/app.scss`, `${cssPath}/admin`)

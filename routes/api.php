@@ -11,16 +11,24 @@
 |
 */
 
-Route::get('/threads', 'Api\ThreadsController@index');
+Route::prefix('v1')
+    ->name('api.')
+    ->group(function () {
+        Route::get('/', function () {
+            return response('', \Illuminate\Http\Response::HTTP_FORBIDDEN);
+        })->name('base');
 
-Route::middleware('guest:api')->group(function () {
-    Route::post('/login', 'Api\AuthController@login');
-    Route::post('/register', 'Api\AuthController@register');
-});
+        Route::get('/threads', 'Api\ThreadsController@index');
 
-Route::middleware('auth:api')->group(function () {
-    Route::get('/me', 'Api\AuthController@me');
-    Route::get('/me/profile', 'Api\AuthController@profile');
+        Route::middleware('guest:api')->group(function () {
+            Route::post('/login', 'Api\AuthController@login');
+            Route::post('/register', 'Api\AuthController@register');
+        });
 
-    Route::post('/logout', 'Api\AuthController@logout');
-});
+        Route::middleware('auth:api')->group(function () {
+            Route::get('/me', 'Api\AuthController@me');
+            Route::get('/me/profile', 'Api\AuthController@profile');
+
+            Route::post('/logout', 'Api\AuthController@logout');
+        });
+    });
