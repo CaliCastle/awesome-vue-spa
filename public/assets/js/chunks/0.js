@@ -1,1 +1,1053 @@
-webpackJsonp([0],{67:function(t,s,a){"use strict";Object.defineProperty(s,"__esModule",{value:!0});var e=a(68),i=a.n(e),n=a(71),l=a.n(n),r=a(77),c=a.n(r);s.default={components:{ProfileBar:c.a,Threads:i.a,Sidebar:l.a},metaInfo:{title:"看微博"}}},68:function(t,s,a){var e=a(1)(a(69),a(70),!1,null,null,null);t.exports=e.exports},69:function(t,s,a){"use strict";Object.defineProperty(s,"__esModule",{value:!0}),s.default={data:function(){return{threads:[],pagination:{current_page:0,first_page_url:null,last_page:0,last_page_url:null,next_page_url:null,prev_page_url:null}}},created:function(){var t=this;Client.get("/threads").then(function(s){var a=s.data.threads;t.threads=a.data,setTimeout(function(){(new TimeAgo).render(document.querySelectorAll(".time"),"zh_CN")},50)})}}},70:function(t,s){t.exports={render:function(){var t=this,s=t.$createElement,a=t._self._c||s;return a("div",{staticClass:"column"},[a("section",{staticClass:"py-6"},t._l(t.threads,function(s){return a("article",{staticClass:"media"},[a("figure",{staticClass:"media-left sticky",staticStyle:{top:".75rem"}},[a("avatar",{staticClass:"pointer-events-none",attrs:{username:s.user.username,initials:s.user.name.charAt(0)}})],1),t._v(" "),a("div",{staticClass:"media-content"},[a("div",{staticClass:"content"},[a("p",[a("strong",[t._v(t._s(s.user.name))]),t._v(" "),a("small",[t._v("@"+t._s(s.user.username))]),t._v(" "),a("br"),t._v("\n                        "+t._s(s.body)+"\n                    ")])]),t._v(" "),t._m(0,!0)]),t._v(" "),a("div",{staticClass:"media-right sticky",staticStyle:{top:".75rem"}},[a("small",[a("time",{staticClass:"time",attrs:{datetime:s.updated_at}})])])])})),t._v(" "),t._m(1)])},staticRenderFns:[function(){var t=this.$createElement,s=this._self._c||t;return s("nav",{staticClass:"level is-mobile"},[s("div",{staticClass:"level-left"},[s("a",{staticClass:"level-item"},[s("span",{staticClass:"icon is-small"},[s("i",{staticClass:"fas fa-reply"})])]),this._v(" "),s("a",{staticClass:"level-item"},[s("span",{staticClass:"icon is-small"},[s("i",{staticClass:"fas fa-retweet"})])]),this._v(" "),s("a",{staticClass:"level-item"},[s("span",{staticClass:"icon is-small"},[s("i",{staticClass:"fas fa-heart"})])])])])},function(){var t=this,s=t.$createElement,a=t._self._c||s;return a("nav",{staticClass:"pagination is-centered is-rounded",attrs:{role:"navigation","aria-label":"pagination"}},[a("a",{staticClass:"pagination-previous"},[t._v("上一页")]),t._v(" "),a("a",{staticClass:"pagination-next"},[t._v("下一页")]),t._v(" "),a("ul",{staticClass:"pagination-list"},[a("li",[a("a",{staticClass:"pagination-link",attrs:{"aria-label":"Goto page 1"}},[t._v("1")])]),t._v(" "),a("li",[a("span",{staticClass:"pagination-ellipsis"},[t._v("…")])]),t._v(" "),a("li",[a("a",{staticClass:"pagination-link",attrs:{"aria-label":"Goto page 45"}},[t._v("45")])]),t._v(" "),a("li",[a("a",{staticClass:"pagination-link is-current",attrs:{"aria-label":"Page 46","aria-current":"page"}},[t._v("46")])]),t._v(" "),a("li",[a("a",{staticClass:"pagination-link",attrs:{"aria-label":"Goto page 47"}},[t._v("47")])]),t._v(" "),a("li",[a("span",{staticClass:"pagination-ellipsis"},[t._v("…")])]),t._v(" "),a("li",[a("a",{staticClass:"pagination-link",attrs:{"aria-label":"Goto page 86"}},[t._v("86")])])])])}]}},71:function(t,s,a){var e=a(1)(a(72),a(76),!1,null,null,null);t.exports=e.exports},72:function(t,s,a){"use strict";Object.defineProperty(s,"__esModule",{value:!0});var e=a(73),i=a.n(e);s.default={components:{TrendingTopics:i.a}}},73:function(t,s,a){var e=a(1)(a(74),a(75),!1,null,null,null);t.exports=e.exports},74:function(t,s,a){"use strict";Object.defineProperty(s,"__esModule",{value:!0}),s.default={name:"trending-topics"}},75:function(t,s){t.exports={render:function(){this.$createElement;this._self._c;return this._m(0)},staticRenderFns:[function(){var t=this.$createElement,s=this._self._c||t;return s("section",{staticClass:"mb-4 p-2"},[s("nav",{staticClass:"panel overflow-hidden rounded-lg has-background-white shadow-subtle"},[s("p",{staticClass:"panel-heading panel-heading has-text-weight-bold has-text-white has-background-primary text-base py-4 rounded-t-lg"},[s("i",{staticClass:"fas fa-fire"}),this._v(" 热门话题\n        ")]),this._v(" "),s("a",{staticClass:"panel-block border-0"},[s("span",{staticClass:"panel-icon"},[s("i",{staticClass:"fas fa-hashtag",attrs:{"aria-hidden":"true"}})]),this._v("\n            话题1\n        ")])])])}]}},76:function(t,s){t.exports={render:function(){var t=this.$createElement,s=this._self._c||t;return s("div",{staticClass:"column is-one-quarter"},[s("div",{staticClass:"sticky pin-t"},[s("trending-topics")],1)])},staticRenderFns:[]}},77:function(t,s,a){var e=a(1)(a(78),a(79),!1,null,null,null);t.exports=e.exports},78:function(t,s,a){"use strict";Object.defineProperty(s,"__esModule",{value:!0}),s.default={name:"profile-bar",data:function(){return{profile:{}}},methods:{loginDidClick:function(){this.$modal.show("login")},registerDidClick:function(){this.$modal.show("register")},fetchUserInfo:function(){var t=this;Client.get("/me/profile").then(function(s){var a=s.data;t.profile=a}).catch(function(t){})}},created:function(){var t=this;this.$app.authenticated&&this.fetchUserInfo(),Event.listen("user-logged-in",function(){t.fetchUserInfo()})}}},79:function(t,s){t.exports={render:function(){var t=this,s=t.$createElement,a=t._self._c||s;return a("div",{staticClass:"column is-one-quarter"},[a("div",{staticClass:"sticky pin-t"},[a("section",{staticClass:"mb-4 p-2"},[a("transition",{attrs:{name:"slide-fade"}},[t.$app.authenticated?a("div",{key:"user",staticClass:"card rounded-lg overflow-hidden shadow-subtle"},[a("div",{staticClass:"w-full h-16",staticStyle:{background:"linear-gradient(to right bottom, #8A4D76, #8A4D76)"}}),t._v(" "),a("div",{staticClass:"columns"},[a("div",{staticClass:"column is-one-third flex justify-center items-center h-full p-0 ml-3 -mt-4"},[a("avatar",{staticClass:"border-4 border-white pointer-events-none",attrs:{username:t.$app.user.username,initials:t.$app.user.name.charAt(0),size:72}})],1),t._v(" "),a("div",{staticClass:"column px-0 pr-3 pt-4 pb-0"},[a("b",{staticClass:"p-0 mb-2 text-lg"},[t._v(t._s(t.$app.user.name))]),t._v(" "),a("small",{staticClass:"block mb-2"},[t._v("@"+t._s(t.$app.user.username))])])]),t._v(" "),a("div",{staticClass:"columns pb-4 mx-2"},[a("div",{staticClass:"column"},[a("a",{staticClass:"text-center",attrs:{href:"#"}},[a("p",{staticClass:"font-bold text-sm"},[a("b",[t._v("微博")])]),t._v(" "),a("span",{staticClass:"block font-bold text-xl"},[t._v(t._s(t.profile.threadsCount))])])]),t._v(" "),a("div",{staticClass:"column"},[a("a",{staticClass:"text-center",attrs:{href:"#"}},[a("p",{staticClass:"font-bold text-sm"},[a("b",[t._v("关注中")])]),t._v(" "),a("span",{staticClass:"block font-bold text-xl"},[t._v(t._s(t.profile.following))])])]),t._v(" "),a("div",{staticClass:"column"},[a("a",{staticClass:"text-center",attrs:{href:"#"}},[a("p",{staticClass:"font-bold text-sm"},[a("b",[t._v("粉丝")])]),t._v(" "),a("span",{staticClass:"block font-bold text-xl"},[t._v(t._s(t.profile.followers))])])])])]):a("div",{key:"guest",staticClass:"card rounded-lg shadow-subtle"},[a("header",{staticClass:"card-header has-background-success rounded-t-lg"},[a("p",{staticClass:"card-header-title has-text-white"},[a("i",{staticClass:"fas fa-user"}),t._v(" 还木有登陆？\n                        ")])]),t._v(" "),a("div",{staticClass:"card-content"},[a("div",{staticClass:"content"},[a("p",[t._v("\n                                最近发生了什么新鲜事？赶快来跟大家分享一下吧！\n                            ")])])]),t._v(" "),a("footer",{staticClass:"card-footer border-0 pb-2"},[a("a",{staticClass:"card-footer-item button rounded is-success border-0 ml-4 mr-2 my-3 has-text-weight-bold text-sm shadow-subtle",attrs:{href:"#"},on:{click:function(s){return s.preventDefault(),t.loginDidClick(s)}}},[a("i",{staticClass:"fas fa-sign-in-alt"}),t._v(" 登陆\n                        ")]),t._v(" "),a("a",{staticClass:"card-footer-item button rounded border-0 ml-2 mr-4 my-3 has-text-weight-bold text-sm shadow-subtle",attrs:{href:"#"},on:{click:function(s){return s.preventDefault(),t.registerDidClick(s)}}},[a("i",{staticClass:"fas fa-plus-circle"}),t._v(" 注册\n                        ")])])])])],1)])])},staticRenderFns:[]}},80:function(t,s){t.exports={render:function(){var t=this.$createElement,s=this._self._c||t;return s("div",{staticClass:"container"},[s("div",{staticClass:"columns"},[s("profile-bar"),this._v(" "),s("threads"),this._v(" "),s("sidebar")],1)])},staticRenderFns:[]}},84:function(t,s,a){var e=a(1)(a(67),a(80),!1,null,null,null);t.exports=e.exports}});
+webpackJsonp([0],{
+
+/***/ 76:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(79)
+/* template */
+var __vue_template__ = __webpack_require__(92)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/Home.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6c0a33b2", Component.options)
+  } else {
+    hotAPI.reload("data-v-6c0a33b2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 79:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_Threads__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_Threads___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__home_Threads__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_Sidebar__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_Sidebar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__home_Sidebar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_ProfileBar__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_ProfileBar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__home_ProfileBar__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: { ProfileBar: __WEBPACK_IMPORTED_MODULE_2__home_ProfileBar___default.a, Threads: __WEBPACK_IMPORTED_MODULE_0__home_Threads___default.a, Sidebar: __WEBPACK_IMPORTED_MODULE_1__home_Sidebar___default.a },
+    metaInfo: {
+        title: '看微博'
+    }
+});
+
+/***/ }),
+
+/***/ 80:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(81)
+/* template */
+var __vue_template__ = __webpack_require__(82)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/home/Threads.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-71a81de8", Component.options)
+  } else {
+    hotAPI.reload("data-v-71a81de8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 81:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            threads: [],
+            pagination: {
+                current_page: 0,
+                first_page_url: null,
+                last_page: 0,
+                last_page_url: null,
+                next_page_url: null,
+                prev_page_url: null
+            }
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        Client.get('/threads').then(function (_ref) {
+            var data = _ref.data;
+
+            var threads = data.threads;
+
+            _this.threads = threads.data;
+
+            setTimeout(function () {
+                // Render timeago
+                new TimeAgo().render(document.querySelectorAll('.time'), 'zh_CN');
+            }, 50);
+        });
+    }
+});
+
+/***/ }),
+
+/***/ 82:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "column" }, [
+    _c(
+      "section",
+      { staticClass: "py-6" },
+      _vm._l(_vm.threads, function(thread) {
+        return _c("article", { staticClass: "media" }, [
+          _c(
+            "figure",
+            {
+              staticClass: "media-left sticky",
+              staticStyle: { top: ".75rem" }
+            },
+            [
+              _c("avatar", {
+                staticClass: "pointer-events-none",
+                attrs: {
+                  username: thread.user.username,
+                  initials: thread.user.name.charAt(0)
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "media-content" }, [
+            _c("div", { staticClass: "content" }, [
+              _c("p", [
+                _c("strong", [_vm._v(_vm._s(thread.user.name))]),
+                _vm._v(" "),
+                _c("small", [_vm._v("@" + _vm._s(thread.user.username))]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(thread.body) +
+                    "\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(0, true)
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "media-right sticky",
+              staticStyle: { top: ".75rem" }
+            },
+            [
+              _c("small", [
+                _c("time", {
+                  staticClass: "time",
+                  attrs: { datetime: thread.updated_at }
+                })
+              ])
+            ]
+          )
+        ])
+      })
+    ),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "level is-mobile" }, [
+      _c("div", { staticClass: "level-left" }, [
+        _c("a", { staticClass: "level-item" }, [
+          _c("span", { staticClass: "icon is-small" }, [
+            _c("i", { staticClass: "fas fa-reply" })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "level-item" }, [
+          _c("span", { staticClass: "icon is-small" }, [
+            _c("i", { staticClass: "fas fa-retweet" })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "level-item" }, [
+          _c("span", { staticClass: "icon is-small" }, [
+            _c("i", { staticClass: "fas fa-heart" })
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "nav",
+      {
+        staticClass: "pagination is-centered is-rounded",
+        attrs: { role: "navigation", "aria-label": "pagination" }
+      },
+      [
+        _c("a", { staticClass: "pagination-previous" }, [_vm._v("上一页")]),
+        _vm._v(" "),
+        _c("a", { staticClass: "pagination-next" }, [_vm._v("下一页")]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "pagination-list" }, [
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "pagination-link",
+                attrs: { "aria-label": "Goto page 1" }
+              },
+              [_vm._v("1")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("span", { staticClass: "pagination-ellipsis" }, [_vm._v("…")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "pagination-link",
+                attrs: { "aria-label": "Goto page 45" }
+              },
+              [_vm._v("45")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "pagination-link is-current",
+                attrs: { "aria-label": "Page 46", "aria-current": "page" }
+              },
+              [_vm._v("46")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "pagination-link",
+                attrs: { "aria-label": "Goto page 47" }
+              },
+              [_vm._v("47")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("span", { staticClass: "pagination-ellipsis" }, [_vm._v("…")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c(
+              "a",
+              {
+                staticClass: "pagination-link",
+                attrs: { "aria-label": "Goto page 86" }
+              },
+              [_vm._v("86")]
+            )
+          ])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-71a81de8", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 83:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(84)
+/* template */
+var __vue_template__ = __webpack_require__(88)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/home/Sidebar.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3a8c373f", Component.options)
+  } else {
+    hotAPI.reload("data-v-3a8c373f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 84:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TrendingTopics__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TrendingTopics___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__TrendingTopics__);
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: { TrendingTopics: __WEBPACK_IMPORTED_MODULE_0__TrendingTopics___default.a }
+});
+
+/***/ }),
+
+/***/ 85:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(86)
+/* template */
+var __vue_template__ = __webpack_require__(87)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/home/TrendingTopics.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5a2e41d4", Component.options)
+  } else {
+    hotAPI.reload("data-v-5a2e41d4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 86:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'trending-topics'
+});
+
+/***/ }),
+
+/***/ 87:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "mb-4 p-2" }, [
+      _c(
+        "nav",
+        {
+          staticClass:
+            "panel overflow-hidden rounded-lg has-background-white shadow-subtle"
+        },
+        [
+          _c(
+            "p",
+            {
+              staticClass:
+                "panel-heading panel-heading has-text-weight-bold has-text-white has-background-primary text-base py-4 rounded-t-lg"
+            },
+            [
+              _c("i", { staticClass: "fas fa-fire" }),
+              _vm._v(" 热门话题\n        ")
+            ]
+          ),
+          _vm._v(" "),
+          _c("a", { staticClass: "panel-block border-0" }, [
+            _c("span", { staticClass: "panel-icon" }, [
+              _c("i", {
+                staticClass: "fas fa-hashtag",
+                attrs: { "aria-hidden": "true" }
+              })
+            ]),
+            _vm._v("\n            话题1\n        ")
+          ])
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5a2e41d4", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 88:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "column is-one-quarter" }, [
+    _c("div", { staticClass: "sticky pin-t" }, [_c("trending-topics")], 1)
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3a8c373f", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 89:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(90)
+/* template */
+var __vue_template__ = __webpack_require__(91)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/views/home/ProfileBar.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a3faa7d2", Component.options)
+  } else {
+    hotAPI.reload("data-v-a3faa7d2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 90:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'profile-bar',
+    data: function data() {
+        return {
+            profile: {}
+        };
+    },
+
+    methods: {
+        loginDidClick: function loginDidClick() {
+            this.$modal.show('login');
+        },
+        registerDidClick: function registerDidClick() {
+            this.$modal.show('register');
+        },
+        fetchUserInfo: function fetchUserInfo() {
+            var _this = this;
+
+            Client.get('/me/profile').then(function (_ref) {
+                var data = _ref.data;
+
+                _this.profile = data;
+            }).catch(function (error) {});
+        }
+    },
+    created: function created() {
+        var _this2 = this;
+
+        if (this.$app.authenticated) this.fetchUserInfo();
+
+        Event.listen('user-logged-in', function () {
+            _this2.fetchUserInfo();
+        });
+    }
+});
+
+/***/ }),
+
+/***/ 91:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "column is-one-quarter" }, [
+    _c("div", { staticClass: "sticky pin-t" }, [
+      _c(
+        "section",
+        { staticClass: "mb-4 p-2" },
+        [
+          _c("transition", { attrs: { name: "slide-fade" } }, [
+            _vm.$app.authenticated
+              ? _c(
+                  "div",
+                  {
+                    key: "user",
+                    staticClass: "card rounded-lg overflow-hidden shadow-subtle"
+                  },
+                  [
+                    _c("div", {
+                      staticClass: "w-full h-16",
+                      staticStyle: {
+                        background:
+                          "linear-gradient(to right bottom, #8A4D76, #8A4D76)"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "columns" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "column is-one-third flex justify-center items-center h-full p-0 ml-3 -mt-4"
+                        },
+                        [
+                          _c("avatar", {
+                            staticClass:
+                              "border-4 border-white pointer-events-none",
+                            attrs: {
+                              username: _vm.$app.user.username,
+                              initials: _vm.$app.user.name.charAt(0),
+                              size: 72
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "column px-0 pr-3 pt-4 pb-0" }, [
+                        _c("b", { staticClass: "p-0 mb-2 text-lg" }, [
+                          _vm._v(_vm._s(_vm.$app.user.name))
+                        ]),
+                        _vm._v(" "),
+                        _c("small", { staticClass: "block mb-2" }, [
+                          _vm._v("@" + _vm._s(_vm.$app.user.username))
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "columns pb-4 mx-2" }, [
+                      _c("div", { staticClass: "column" }, [
+                        _c(
+                          "a",
+                          { staticClass: "text-center", attrs: { href: "#" } },
+                          [
+                            _c("p", { staticClass: "font-bold text-sm" }, [
+                              _c("b", [_vm._v("微博")])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              { staticClass: "block font-bold text-xl" },
+                              [_vm._v(_vm._s(_vm.profile.threadsCount))]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "column" }, [
+                        _c(
+                          "a",
+                          { staticClass: "text-center", attrs: { href: "#" } },
+                          [
+                            _c("p", { staticClass: "font-bold text-sm" }, [
+                              _c("b", [_vm._v("关注中")])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              { staticClass: "block font-bold text-xl" },
+                              [_vm._v(_vm._s(_vm.profile.following))]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "column" }, [
+                        _c(
+                          "a",
+                          { staticClass: "text-center", attrs: { href: "#" } },
+                          [
+                            _c("p", { staticClass: "font-bold text-sm" }, [
+                              _c("b", [_vm._v("粉丝")])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              { staticClass: "block font-bold text-xl" },
+                              [_vm._v(_vm._s(_vm.profile.followers))]
+                            )
+                          ]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              : _c(
+                  "div",
+                  {
+                    key: "guest",
+                    staticClass: "card rounded-lg shadow-subtle"
+                  },
+                  [
+                    _c(
+                      "header",
+                      {
+                        staticClass:
+                          "card-header has-background-success rounded-t-lg"
+                      },
+                      [
+                        _c(
+                          "p",
+                          { staticClass: "card-header-title has-text-white" },
+                          [
+                            _c("i", { staticClass: "fas fa-user" }),
+                            _vm._v(" 还木有登陆？\n                        ")
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-content" }, [
+                      _c("div", { staticClass: "content" }, [
+                        _c("p", [
+                          _vm._v(
+                            "\n                                最近发生了什么新鲜事？赶快来跟大家分享一下吧！\n                            "
+                          )
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("footer", { staticClass: "card-footer border-0 pb-2" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "card-footer-item button rounded is-success border-0 ml-4 mr-2 my-3 has-text-weight-bold text-sm shadow-subtle",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.loginDidClick($event)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-sign-in-alt" }),
+                          _vm._v(" 登陆\n                        ")
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "card-footer-item button rounded border-0 ml-2 mr-4 my-3 has-text-weight-bold text-sm shadow-subtle",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.registerDidClick($event)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-plus-circle" }),
+                          _vm._v(" 注册\n                        ")
+                        ]
+                      )
+                    ])
+                  ]
+                )
+          ])
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a3faa7d2", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 92:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      { staticClass: "columns" },
+      [
+        _c("profile-bar"),
+        _vm._v(" "),
+        _c("threads"),
+        _vm._v(" "),
+        _c("sidebar")
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6c0a33b2", module.exports)
+  }
+}
+
+/***/ })
+
+});
