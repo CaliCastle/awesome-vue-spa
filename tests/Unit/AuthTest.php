@@ -46,7 +46,7 @@ class AuthTest extends TestCase
 
         Passport::actingAs($user);
 
-        $response = $this->get('/api/me');
+        $response = $this->get(route('api.me'));
 
         $response->assertExactJson($user->toArray());
     }

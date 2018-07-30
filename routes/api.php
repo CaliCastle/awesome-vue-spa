@@ -18,7 +18,7 @@ Route::prefix('v1')
             return response('', \Illuminate\Http\Response::HTTP_FORBIDDEN);
         })->name('base');
 
-        Route::get('/threads', 'Api\ThreadsController@index');
+        Route::get('/threads', 'Api\ThreadsController@index')->name('threads');
 
         Route::middleware('guest:api')->group(function () {
             Route::post('/login', 'Api\AuthController@login');
@@ -26,7 +26,7 @@ Route::prefix('v1')
         });
 
         Route::middleware('auth:api')->group(function () {
-            Route::get('/me', 'Api\AuthController@me');
+            Route::get('/me', 'Api\AuthController@me')->name('me');
             Route::get('/me/profile', 'Api\AuthController@profile');
 
             Route::post('/logout', 'Api\AuthController@logout');
